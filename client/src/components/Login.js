@@ -53,6 +53,11 @@ const Login = ({setCurrUser, setShow}) =>{
     }
     
 
+    const handleClick = e => {
+      e.preventDefault()
+      setShow(false)
+    }
+
 
     return(
         <div className='main-login'>
@@ -80,6 +85,8 @@ const Login = ({setCurrUser, setShow}) =>{
 
 
         <button onClick={() => handleSubmit} >Login</button>
+
+        
         <div>Don't have an account?<a href="#signup" onClick={handleClick} >Signup</a> </div>
   
         </div>

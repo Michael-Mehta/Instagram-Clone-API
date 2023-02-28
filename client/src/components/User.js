@@ -1,16 +1,16 @@
 import Signup from "./Signup";
 import Login from './Login'
-import Logout from './Logout'
-import PrivateText from "./PrivateText";
+import MainPage from "./MainPage";
+
 import { useState } from "react";
 const User = ({currUser, setCurrUser}) => {
     const [show, setShow]=useState(false)
     if(currUser) 
         return (
             <div>
-            Hello {currUser.email}
-            <PrivateText currUser={currUser}/>
-            <Logout setCurrUser={setCurrUser}/>
+
+                < MainPage />
+
             </div>
         )
     return (

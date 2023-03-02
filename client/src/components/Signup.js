@@ -1,11 +1,26 @@
 import { useRef } from "react"
-const Signup=({setCurrUser, setShow})=>{
+import { useNavigate } from "react-router-dom";
+
+const Signup=({currUser, setCurrUser})=>{
+
+
+    const navigate = useNavigate();
     const formRef = useRef()
-    const signup=async (userInfo, setCurrUser)=>{
+
+    if(currUser) 
+    return (
+        <div>
+        Hello {currUser.email}
+      
+       
+        </div>
+    )
+
+    const signup = async (userInfo, setCurrUser)=>{
         const url="http://localhost:3000/signup"
         try{
             const response=await fetch(url, {
-                method: 'post',
+                method: 'POST',
                 headers: {
                     "content-type": 'application/json',
                     "accept": "application/json"
@@ -16,6 +31,8 @@ const Signup=({setCurrUser, setShow})=>{
             if(!response.ok) throw data.error
             localStorage.setItem('token', response.headers.get("Authorization"))
             setCurrUser(data)
+            console.log(data)
+            navigate('/')
         } catch (error){
             console.log("error", error)
         }
@@ -32,7 +49,7 @@ const Signup=({setCurrUser, setShow})=>{
     }
     const handleClick=e=>{
         e.preventDefault()
-        setShow(true)
+        navigate('/login')
     }
     return(
         <div className="main-signup">

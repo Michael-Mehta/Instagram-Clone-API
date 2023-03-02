@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
     render json: { message: "Logged out." }
   end
 
-  end
+  
   
   # before_action :configure_sign_in_params, only: [:create]
 

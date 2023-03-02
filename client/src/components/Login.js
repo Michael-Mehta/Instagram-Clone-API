@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
 
 import loginPhones from './loginPhones.png'
 
-const Login = ({setCurrUser, setShow}) =>{
+import { useNavigate } from "react-router-dom";
 
+import '../App.css';
+
+const Login = ({setCurrUser}) =>{
+
+    const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+   
 
 
 
@@ -22,11 +28,11 @@ const Login = ({setCurrUser, setShow}) =>{
 
 
     
-    const login=async (userInfo, setCurrUser)=>{
+    const login = async (userInfo, setCurrUser)=>{
       const url="http://localhost:3000/login"
       try{
           const response=await fetch(url, {
-              method: "post",
+              method: "POST",
               headers: {
                   'content-type': 'application/json',
                   'accept': 'application/json'
@@ -34,10 +40,17 @@ const Login = ({setCurrUser, setShow}) =>{
               body: JSON.stringify(userInfo)
           })
           const data=await response.json()
+          
           if(!response.ok) 
             throw data.error
           localStorage.setItem("token", response.headers.get("Authorization"))
-          setCurrUser(data)        
+          setCurrUser(data)
+          console.log(data)
+
+          
+           navigate('/')
+          
+         
       }catch(error){
          console.log("error", error)
       }
@@ -49,15 +62,18 @@ const Login = ({setCurrUser, setShow}) =>{
           "user":{ email: email, password: password }
         }
         login(userInfo, setCurrUser)
-        e.target.reset()
+        navigate("/")
+  
     }
     
 
     const handleClick = e => {
       e.preventDefault()
-      setShow(false)
+     navigate('/signup')
     }
 
+
+    
 
     return(
         <div className='main-login'>
@@ -84,9 +100,9 @@ const Login = ({setCurrUser, setShow}) =>{
         
 
 
-        <button onClick={() => handleSubmit} >Login</button>
+        <button onClick={(e) => handleSubmit(e)} >Login</button>
 
-        
+
         <div>Don't have an account?<a href="#signup" onClick={handleClick} >Signup</a> </div>
   
         </div>

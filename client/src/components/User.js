@@ -5,14 +5,7 @@ import MainPage from "./MainPage";
 import { useState } from "react";
 const User = ({currUser, setCurrUser}) => {
     const [show, setShow]=useState(false)
-    if(currUser) 
-        return (
-            <div>
-
-                < MainPage />
-
-            </div>
-        )
+   
     return (
         <div>
             { show?

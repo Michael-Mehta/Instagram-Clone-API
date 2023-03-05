@@ -74,31 +74,79 @@
 
 .posts {
 
-  display:flex;
-  flex-direction: column;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 
 }
 
 .post {
 
-  height: 100px;
-  width: 100px;
+  display: flex;
+  flex-direction: column;
+
+  height: 800px;
+  width: 400px;
   background-color: purple;
   border: 1px solid rgba(0, 0, 0, 1);
+
+  
+
   
 }
 
 .suggestions {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 1);
+  position: fixed;
+  width: 1fr;
+  height: 100vh;
 }
 
 .suggested1 {
   background-color: rgb(255, 149, 20);
-  border: 1px solid rgba(0, 0, 0, 1);
+  
+  
+ 
 }
 
 .mainpage {
-  grid-template-columns: 50px 100px 100px;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  column-gap: 300px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.naVbar {
+  
+ 
+  height:auto;
+}
+
+
+
+
+.suggestions h1 {
+  position: fixed;
+}
+
+.naVItems {
+  position:fixed;
+  border: 1px solid rgba(0, 0, 0, 1);
+  height: 100vh;
+}
+
+.naVItems div {
+  padding-top: 40px;
+}
+.naVItems h1 {
+  background-image: url(https://static.cdninstagram.com/rsrc.php/v3/y-/r/yXM3FgMdVNX.png);
+    background-position: 0px -52px;
+    background-size: auto;
+    width: 100px;
+    height: 20px;
+    background-repeat: no-repeat;
+    display: inline-block;
 }

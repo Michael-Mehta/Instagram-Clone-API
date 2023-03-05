@@ -3,7 +3,9 @@ import React from 'react'
 const NavBar = () => {
 
   return (
-    <div className='.navbar'>
+    <div className='naVbar'>
+        <div className='naVItems'>
+          <h1></h1>
 
         <div>Home</div>
         <div>Search</div>
@@ -14,6 +16,7 @@ const NavBar = () => {
         <div>Create</div>
         <div>Profile</div>
         <div>More</div>
+        </div>
 
     </div>
   )

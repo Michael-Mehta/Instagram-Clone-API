@@ -2,8 +2,9 @@ import React from 'react'
 
 const Suggestions = () => {
   return (
-    <div className='suggestions'>
+    <div >
 
+        <div className='suggestions'>
         <div className='suggested1'></div>
 
         <h1>Suggestions for you</h1>
@@ -13,7 +14,7 @@ const Suggestions = () => {
         <div className='suggested1'></div>
         <div className='suggested1'></div>
         <div className='suggested1'></div>
-
+       </div>
         
     </div>
   )

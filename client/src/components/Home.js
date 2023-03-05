@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import '../App.css'
+import img from './naruto.jpg'
+
 const Home = () => {
 
     const [posts, setPosts] = useState([...Array(5)])
@@ -10,7 +12,11 @@ const Home = () => {
 
       {
         posts.map((e, i)=> (
-            <div className='post'></div>
+            <div className='post'>
+              <div><p>naruto</p></div>
+              <div><img src = {img} alt = 'naruto'/></div>
+              
+            </div>
         ))
 
     
@@ -20,3 +26,4 @@ const Home = () => {
 }
 
 export default Home
+

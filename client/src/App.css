@@ -136,19 +136,23 @@
   position:fixed;
   border: 1px solid rgba(0, 0, 0, 1);
   height: 100vh;
+  width: 20%;
 }
 
 .naVItems div {
-  padding-top: 40px;
+  display: flex;
+  padding-top: 18px;
+  font-size: large;
+
+  
 }
+
+.naVItems div div {
+  padding-left: 10px;
+}
+
 .naVItems h1 {
-  background-image: url(https://static.cdninstagram.com/rsrc.php/v3/y-/r/yXM3FgMdVNX.png);
-    background-position: 0px -52px;
-    background-size: auto;
-    width: 100px;
-    height: 20px;
-    background-repeat: no-repeat;
-    display: inline-block;
+  font-family: billabong;
 }
 
 .heart-comment {
@@ -167,4 +171,9 @@
   display: flex;
   flex-direction: column;
   
+}
+
+@font-face {
+  font-family: billabong;
+  src: url(../public/FontsFree-Net-Billabong.ttf);
 }

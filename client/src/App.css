@@ -87,7 +87,7 @@
 
   height: 800px;
   width: 400px;
-  background-color: purple;
+  background-color: rgb(255, 255, 255);
   border: 1px solid rgba(0, 0, 0, 1);
 
   
@@ -149,4 +149,22 @@
     height: 20px;
     background-repeat: no-repeat;
     display: inline-block;
+}
+
+.heart-comment {
+  display: flex;
+  z-index: 0;
+ 
+  justify-content: flex-start;
+
+}
+
+.heart-comment div{
+ padding: 5px;
+}
+
+.picIcon {
+  display: flex;
+  flex-direction: column;
+  
 }

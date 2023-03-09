@@ -225,7 +225,10 @@
 
 .postForm {
 
-  margin-left: 7vh;
+  margin-left: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .postBoxContent {
@@ -234,4 +237,96 @@
 
 .postBoxContent div{
   font-size: 200%;
+}
+
+
+.postBoxTwo {
+  display: grid;
+
+ grid-template-columns: 1fr;
+
+  grid-template-rows: 1fr 10fr;
+
+  background-color: rgba(255, 255, 255);
+  border-radius: 10px;
+  margin-left: 35vw;
+
+  margin-top: 20vh;
+  width: 30vw;
+  height: 50vh;
+
+}
+
+.topBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.restBox {
+  
+  background-color: black;
+  border-radius: 0 0 10px 10px;
+}
+
+.firstSubmitButton {
+  width: 50%;
+  margin-top: 10px;
+  margin-left: 3vh;
+}
+
+.arrow {
+  font-size: 30px;
+  margin-top: 5px;
+}
+
+.topBox p {
+  margin-right: 3px;
+  color:rgb(17, 141, 235);
+  font-weight: 400;
+}
+
+.postBoxThree {
+
+  display: grid;
+
+ grid-template-columns: 1fr;
+
+  grid-template-rows: 1fr 10fr;
+
+  background-color: rgba(255, 255, 255);
+  border-radius: 10px;
+  margin-left: 20vw;
+
+  margin-top: 20vh;
+  width: 60vw;
+  height: 60vh;
+
+}
+
+.finalPost {
+  display: flex;
+}
+
+.restBoxTwo {
+
+  background-color: black;
+  height: 100%;
+  width:75%;
+  border-radius: 0 0 0 10px;
+}
+
+.postFormTwo {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+.secondInput {
+  height: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+
+
 }

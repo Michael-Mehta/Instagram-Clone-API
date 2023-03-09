@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavBar from './NavBar'
 import Home from './Home'
 import Suggestions from './Suggestions'
+import CreatePost from './CreatePost'
 
 const MainPage = ({currUser}) => {
+  const [showPost, setShowPost] = useState(false)
   return (
-    <div className='mainpage'>
+    <div>
+      {showPost && < CreatePost setShowPost = {setShowPost}/>}
+   {!showPost && <div className='mainpage'>
 
-        <NavBar />
+        <NavBar setShowPost = {setShowPost}/>
         < Home />
         < Suggestions />
+       
 
+    </div>
+   }
     </div>
   )
 }

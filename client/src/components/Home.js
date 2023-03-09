@@ -6,6 +6,7 @@ import { BsHeart, BsChat } from 'react-icons/bs';
 const Home = () => {
 
     const [posts, setPosts] = useState([...Array(5)])
+   
 
   return (
     <div className='posts'>

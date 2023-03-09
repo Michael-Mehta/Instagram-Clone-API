@@ -4,7 +4,7 @@ import { BsFillHouseDoorFill, BsSearch, BsCompass,
  import { BiMoviePlay } from "react-icons/bi";
  import { GiDove, GiHamburgerMenu } from "react-icons/gi";
 
-const NavBar = () => {
+const NavBar = ({setShowPost}) => {
 
   return (
     <div className='naVbar'>
@@ -17,7 +17,7 @@ const NavBar = () => {
         <div><div><BiMoviePlay/></div><div>Reels</div></div>
         <div><div><BsChatText/></div><div>Messages</div></div>
         <div><div><BsHeart/></div><div>Notifications</div></div>
-        <div><div><BsPlusSquare/></div><div>Create</div></div>
+        <div onClick={() => setShowPost(true)}><div><BsPlusSquare/></div><div>Create</div></div>
         <div><div>Profile</div></div>
         <div><div><GiHamburgerMenu/></div><div>More</div></div>
         </div>

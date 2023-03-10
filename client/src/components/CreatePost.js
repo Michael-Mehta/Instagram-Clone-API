@@ -16,12 +16,12 @@ const CreatePost = ({setShowPost}) => {
 
   function handleSecondSubmit(){
 
-    setThirdStage(true)
-    setSecondStage(false)
+    setThirdStage(!thirdStage)
+    setSecondStage(!secondStage)
 
    }
 
-   function handleFourthSubmit() {
+   function handleThirdSubmit() {
      
    }
 
@@ -65,8 +65,8 @@ const CreatePost = ({setShowPost}) => {
       <div className='postBoxThree'>
 
 <div className='topBox'>
-          < BiArrowBack onClick={() => setThirdStage(false)} className = 'arrow'/> 
-        <p onClick={()=> handleSecondSubmit()}>Share</p>
+          < BiArrowBack onClick={() => handleSecondSubmit()} className = 'arrow'/> 
+        <p onClick={()=> handleThirdSubmit()}>Share</p>
         </div>
         <div className='finalPost'>
         <div className='restBoxTwo'></div>

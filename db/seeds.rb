@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+
+
+newPost = Post.create(id: 2, description: "second post", 
+user_id: 1)
+
+newPost.image.attach(
+    io: File.open('./public/pics/eren.jpg'),
+    filename: 'eren.jpg',
+    content_type: 'application/jpg'
+)

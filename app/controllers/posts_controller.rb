@@ -1,21 +1,14 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show update destroy ]
-
-
   include ActiveStorage::SetCurrent
 
-
+  before_action :authenticate_user!
+  before_action :set_post, only: %i[ show update destroy ]
 
   # GET /posts
   def index
     @posts = Post.all
 
-     render json: ( @posts.map do |post|
-      post.as_json(include: :image).merge(
-      image: post.image.url
-    )
-    end
-     )
+    render json: @posts.map { |post| post.as_json(include: :image).merge(image: post.image.url) }
   end
 
   # GET /posts/1
@@ -27,16 +20,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params.except(:image))
-
-    if image
-      @post.image.attach(image)
-    end
-
-
-
-  
-   
+    @post = current_user.posts.build post_params
 
     if @post.save
       render json: @post, status: :created, location: @post
@@ -62,7 +46,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = current_user.posts.find params[:id]
     end
 
     # Only allow a list of trusted parameters through.

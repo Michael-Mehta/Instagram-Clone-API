@@ -2,33 +2,51 @@ import React, { useState } from 'react'
 import { AiOutlinePicture } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 
-const CreatePost = ({setShowPost}) => {
+const CreatePost = ({setShowPost, currUser}) => {
 
-   const [description, setDescription] = useState('')
-   
-   const [secondStage, setSecondStage] = useState(false)
-   const [thirdStage, setThirdStage] = useState(false)
   
 
-   function handleSubmit(){
-         setSecondStage(true)
-   } 
+   const handleSubmit = (e) => {
 
-  function handleSecondSubmit(){
+       e.preventDefault()
 
-    setThirdStage(!thirdStage)
-    setSecondStage(!secondStage)
+       const formData = new FormData();
 
-   }
+       formData.append("post[description]", e.target.description.value);
 
-   function handleThirdSubmit() {
+
+       formData.append("post[image]", e.target.image.files[0] );
+
+       formData.append("post[user_id]", currUser.id );
+
+
+
+       
+
+
+       postData(formData)
      
    }
 
-   const handleDescriptionChange = (event) => {
-    const value = event.target.value;
-    setDescription(value)
-   }
+
+
+   const postData = (formData) => {
+
+
+    fetch('http://localhost:3000/posts', {
+      method: "POST",
+      body: formData,
+    }).then((response) => response.json())
+    .then((data) => {
+      
+      console.log(data);
+      
+
+    }).catch((error) => console.log(error));
+
+   };
+
+   
 
   return (
     <div className='postCreateBackground'>
@@ -36,54 +54,28 @@ const CreatePost = ({setShowPost}) => {
       
       <div className='x' onClick = {() => setShowPost(false)}>X</div>
       
-     { !secondStage && !thirdStage && <div className='postBox'>
-
+     
       <h1>Choose a photo to post</h1>
 
       < AiOutlinePicture className='createPic'/>
 
       <form onSubmit={(e) => handleSubmit(e)} className = "postForm">
         <input type = "file" name = "image" id = "image" />
-        <button type = "submit" className='firstSubmitButton'>Submit</button>
-      </form>
-      </div>}
 
-      {secondStage && 
-      <div className='postBoxTwo'>
-
-        <div className='topBox'>
-          < BiArrowBack onClick={() => setSecondStage(false)} className = 'arrow'/> 
-        <p onClick={()=> handleSecondSubmit()}>Next</p>
-        </div>
-        <div className='restBox'></div>
-
-
-
-      </div>}
-
-      {thirdStage && 
-      <div className='postBoxThree'>
-
-<div className='topBox'>
-          < BiArrowBack onClick={() => handleSecondSubmit()} className = 'arrow'/> 
-        <p onClick={()=> handleThirdSubmit()}>Share</p>
-        </div>
-        <div className='finalPost'>
-        <div className='restBoxTwo'></div>
-
-
-        <form className='postFormTwo'>
-
-          <textarea type = "text" name = "descriptions" id = "description" 
-          placeholder='add description' className='secondInput' onChange={handleDescriptionChange}/>
+        <textarea type = "text" name = "description" id = "description" 
+         placeholder='add description' className='secondInput' />
      
 
-        </form>
-        </div>
-
+        <button type = "submit" className='firstSubmitButton'>Submit</button>
+      </form>
       </div>
-      }
-    </div>
+
+     
+
+     
+          
+
+  
   )
 }
 

@@ -8,7 +8,7 @@ const MainPage = ({currUser}) => {
   const [showPost, setShowPost] = useState(false)
   return (
     <div>
-      {showPost && < CreatePost setShowPost = {setShowPost}/>}
+      {showPost && < CreatePost setShowPost = {setShowPost} currUser = {currUser}/>}
    {!showPost && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost}/>

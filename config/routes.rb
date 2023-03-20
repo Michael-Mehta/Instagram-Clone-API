@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :posts
+  
+  resources :posts do
+    resources :likes, only: [:create]
+  end
+  
+  resources :likes, only: [:destroy]
   get 'private/test'
   devise_for :users, 
     path: '', 

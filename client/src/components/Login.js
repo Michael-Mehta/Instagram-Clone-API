@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import '../App.css';
 
-const Login = ({setCurrUser}) =>{
+const Login = ({setCurrUser, setToken}) =>{
 
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
@@ -44,8 +44,10 @@ const Login = ({setCurrUser}) =>{
           if(!response.ok) 
             throw data.error
           localStorage.setItem("token", response.headers.get("Authorization"))
-          setCurrUser(data)
+          setCurrUser(data.user)
           console.log(data)
+          localStorage.setItem('authToken', data.token);
+          
 
           
            navigate('/')

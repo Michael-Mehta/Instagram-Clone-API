@@ -339,3 +339,8 @@
 .postDescription {
   display: flex;
 }
+
+.heart:hover {
+  color:red;
+
+}

@@ -4,7 +4,7 @@ import Home from './Home'
 import Suggestions from './Suggestions'
 import CreatePost from './CreatePost'
 
-const MainPage = ({currUser}) => {
+const MainPage = ({currUser, token}) => {
   const [showPost, setShowPost] = useState(false)
   return (
     <div>
@@ -12,7 +12,7 @@ const MainPage = ({currUser}) => {
    {!showPost && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost}/>
-        < Home />
+        < Home token = {token} currUser = {currUser}/>
         < Suggestions />
        
 

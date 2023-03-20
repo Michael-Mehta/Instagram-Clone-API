@@ -11,6 +11,7 @@ import Signup from './components/Signup';
 
 const App=()=>{
   const [currUser, setCurrUser]=useState(null);
+  const [token, setToken] = useState('');
   const navigate = useNavigate;
 
  
@@ -19,9 +20,10 @@ const App=()=>{
     <div className="App">
         <BrowserRouter>
       <Routes>
-        <Route path="/" element={currUser? <MainPage currUser = {currUser} /> : 
+        <Route path="/" element={currUser? <MainPage currUser = {currUser}
+         token = {token}/> : 
         <Login currUser = {currUser}
-         setCurrUser = {setCurrUser} />} />
+         setCurrUser = {setCurrUser} setToken = {setToken} />} />
         <Route path="/login" element={<Login currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
         <Route path="/signup" element={<Signup currUser = {currUser}

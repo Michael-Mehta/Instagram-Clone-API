@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import Post from './Post';
 import '../App.css'
-import img from './naruto.jpg'
-import { BsHeart, BsChat } from 'react-icons/bs';
 
-const Home = () => {
+
+const Home = ({token, currUser}) => {
+
+  const [hasLiked, setHasLiked] = useState(false);
+  const [likes, setLikes] = useState(0);
+
 
     const [posts, setPosts] = useState([])
 
@@ -11,7 +15,18 @@ const Home = () => {
     const getPosts = () => {
 
     
-      fetch('http://localhost:3000/posts')
+      fetch('http://localhost:3000/posts', {
+        
+      method: 'GET',
+
+      headers: {
+
+        
+
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      }
+
+      })
       .then((response) => response.json())
       .then((data) => {
           
@@ -24,6 +39,9 @@ const Home = () => {
           console.log('Error:', error)
       })
   }
+
+
+
   
   useEffect(() => {
   
@@ -38,25 +56,33 @@ const Home = () => {
     
     }, []);
 
+
+
+    useEffect(() => {
+      posts.forEach((post) => {
+        fetch(`/posts/${post.id}/likes`)
+          .then((response) => response.json())
+          .then((data) => {
+            post.likes_count = data.likes_count;
+            setPosts([...posts]);
+          });
+      });
+    }, [posts]);
+
+    
+
+
+    
+
+
+
   return (
     <div className='posts'>
 
 
       {
-        posts.map((e, i)=> (
-            <div className='post'>
-              <div><p></p></div>
-              <div className='picIcon'><img src = {posts[i].image} alt = 'naruto'/>
-              <div className='heart-comment'>
-                <div>< BsHeart /></div>
-              <div>< BsChat /></div>
-              </div>
-              <div className='postDescription'>
-                <p>Description:{posts[i].description}</p>
-                </div>
-              </div>
-              
-            </div>
+        posts.map((post, i)=> (
+            <Post post = {post} currUser = {currUser} />
         ))
 
     

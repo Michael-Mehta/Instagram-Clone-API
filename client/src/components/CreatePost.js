@@ -36,6 +36,9 @@ const CreatePost = ({setShowPost, currUser}) => {
     fetch('http://localhost:3000/posts', {
       method: "POST",
       body: formData,
+      headers: {
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      }
     }).then((response) => response.json())
     .then((data) => {
       

@@ -10,8 +10,9 @@
      origins "http://localhost:3001"
 
      resource "*",
-     headers: ["Authorization"],
-     expose: ["Authorization"],
+
+     headers: :any,
+    
      methods: [:get, :post, :put, :patch, :delete, :options, :head],
      max_age: 600
    end

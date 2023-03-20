@@ -6,7 +6,12 @@ class Users::SessionsController < Devise::SessionsController
 
   private
   def respond_with(resource, _opts = {})
-    render json: resource
+    render json: {
+      user: resource,
+      
+      'token':  request.env['warden-jwt_auth.token']
+
+}
   end
   
   def respond_to_on_destroy
@@ -15,6 +20,8 @@ class Users::SessionsController < Devise::SessionsController
 
   
   
+
+ 
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

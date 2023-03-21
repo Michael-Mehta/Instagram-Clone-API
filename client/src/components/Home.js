@@ -72,7 +72,7 @@ const Home = ({token, currUser}) => {
 
       {
         posts.map((post, i)=> (
-            <Post oldPost = {post}
+            <Post post = {post}
              currUser = {currUser}
              />
         ))

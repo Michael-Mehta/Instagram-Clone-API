@@ -4,9 +4,69 @@ import img from './naruto.jpg'
 import { BsHeart, BsChat } from 'react-icons/bs';
 
 
-const Post = ({ post, currUser}) => {
-    const [liked, setLiked] = useState(post.liked_by_current_user);
+const Post = ({ oldPost, currUser}) => {
+    const [liked, setLiked] = useState(oldPost.liked_by_current_user);
+     
+    const [likes, setLikes] = useState(0)
 
+    const [post, setPost] = useState(oldPost)
+    
+    const [reload, setReload] = useState(false)
+
+    const [ok, setOk] = useState(false)
+
+    const [red, setRed] = useState(false)
+
+    useEffect(() => {
+
+
+        setLikes(post.likes_count)
+  
+    },[])
+
+
+
+    const getPost = () => {
+
+    
+
+        fetch(`http://localhost:3000/posts/${post.id}`, {
+          
+        method: 'GET',
+  
+        headers: {
+  
+          
+  
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        }
+  
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            
+            console.log(data)
+            console.log(data.image)
+            setPost(data)
+            setOk(true)
+            
+            
+        })
+        .catch((error) => {
+            console.log('Error:', error)
+        })
+
+        {ok && setLikes(post.likes_count)}
+        
+        setOk(false)
+    }
+  
+
+   
+    
+  
+      
+    
     const handleLikeClick = () => {
         if (liked) {
             // User has already liked the post - unlike it
@@ -18,17 +78,20 @@ const Post = ({ post, currUser}) => {
                  },
 
 
-                body: JSON.stringify({ user_id: currUser.id , post_id: post.id })
+                body: JSON.stringify({ 
+                'user_id': currUser.id ,
+                'post_id': post.id })
             
             
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    setLiked(false);
-                    // Update the post object with the new likes_count value
-                    post.likes_count = data.likes_count;
-                })
-                .catch(error => console.error(error));
+            });
+
+            
+
+            
+            setLiked(false)
+            setRed(false)
+            getPost()
+
         } else {
             // User hasn't liked the post yet - like it
             fetch(`http://localhost:3000/posts/${post.id}/likes`,
@@ -47,10 +110,15 @@ const Post = ({ post, currUser}) => {
                 .then((data) => {
                     setLiked(true);
                     // Update the post object with the new likes_count value
-                    post.likes_count = data.likes_count;
+                     
+                     setRed(true)
+                     getPost()
+                     
                 })
                 .catch(error => console.error(error));
         }
+
+
     };
 
 
@@ -60,10 +128,14 @@ const Post = ({ post, currUser}) => {
             <div><p></p></div>
             <div className='picIcon'><img src={post.image} alt='naruto' />
                 <div className='heart-comment'>
-                    <div>< BsHeart className='heart' onClick={() => handleLikeClick()} /></div>
+
+            {/* heart classes are switched due to initial glitch after 
+            first click*/}
+                    <div>< BsHeart className={red ? 'heart':'unheart'} 
+                    onClick={() => handleLikeClick()} /></div>
                     <div>< BsChat /></div>
                 </div>
-                <div>Likes:{post.likes_count}</div>
+                <div>Likes:{likes}</div>
                 <div className='postDescription'>
                     <p>Description:{post.description}</p>
                 </div>

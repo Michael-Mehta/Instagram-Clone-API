@@ -344,3 +344,13 @@
   color:red;
 
 }
+
+
+.unheart {
+
+  color:red;
+}
+
+.unheart:hover {
+  color: rgb(78, 83, 87);
+}

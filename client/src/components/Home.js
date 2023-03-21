@@ -7,7 +7,7 @@ const Home = ({token, currUser}) => {
 
   const [hasLiked, setHasLiked] = useState(false);
   const [likes, setLikes] = useState(0);
-
+  
 
     const [posts, setPosts] = useState([])
 
@@ -58,17 +58,7 @@ const Home = ({token, currUser}) => {
 
 
 
-    useEffect(() => {
-      posts.forEach((post) => {
-        fetch(`/posts/${post.id}/likes`)
-          .then((response) => response.json())
-          .then((data) => {
-            post.likes_count = data.likes_count;
-            setPosts([...posts]);
-          });
-      });
-    }, [posts]);
-
+   
     
 
 
@@ -82,7 +72,9 @@ const Home = ({token, currUser}) => {
 
       {
         posts.map((post, i)=> (
-            <Post post = {post} currUser = {currUser} />
+            <Post oldPost = {post}
+             currUser = {currUser}
+             />
         ))
 
     

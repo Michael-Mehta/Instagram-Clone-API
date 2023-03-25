@@ -104,7 +104,7 @@ const Post = ({ post, currUser}) => {
                     <p>Description:{post.description}</p>
                 </div>
                 <div className='addComment'>
-                    <p>Add a comment</p>
+                    <p>View all comments</p>
                 </div>
             </div>
 

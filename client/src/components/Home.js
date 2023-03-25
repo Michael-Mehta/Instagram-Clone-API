@@ -3,7 +3,7 @@ import Post from './Post';
 import '../App.css'
 
 
-const Home = ({token, currUser}) => {
+const Home = ({token, currUser, setShowComment}) => {
 
   const [hasLiked, setHasLiked] = useState(false);
   const [likes, setLikes] = useState(0);
@@ -74,6 +74,7 @@ const Home = ({token, currUser}) => {
         posts.map((post, i)=> (
             <Post post = {post}
              currUser = {currUser}
+             setShowComment = {setShowComment}
              />
         ))
 

@@ -359,3 +359,6 @@
   color: rgb(141, 141, 141);
 }
 
+.likes {
+  align-self: flex-start;
+}

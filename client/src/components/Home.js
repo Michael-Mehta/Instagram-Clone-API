@@ -31,7 +31,7 @@ const Home = ({token, currUser}) => {
       .then((data) => {
           
           console.log(data)
-          console.log(data[1].image)
+        
           setPosts(data)
           
       })

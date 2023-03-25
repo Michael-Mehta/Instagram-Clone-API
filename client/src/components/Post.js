@@ -4,7 +4,7 @@ import img from './naruto.jpg'
 import { BsHeart, BsChat } from 'react-icons/bs';
 
 
-const Post = ({ post, currUser, setShowComment}) => {
+const Post = ({ post, currUser, setShowComment, setPic}) => {
     const [liked, setLiked] = useState(post.liked_by_current_user);
      
     const [likes, setLikes] = useState(0)
@@ -88,6 +88,13 @@ const Post = ({ post, currUser, setShowComment}) => {
 
 
 
+
+    const handleComment = () => {
+        setShowComment(true)
+        setPic(post.image)
+    }
+
+
     return (
         <div className='post'>
             <div><p></p></div>
@@ -97,7 +104,7 @@ const Post = ({ post, currUser, setShowComment}) => {
           
                     <div>< BsHeart className={red ? 'unheart':'heart'} 
                     onMouseDown={() => handleLikeClick()} /></div>
-                    <div onClick={() => setShowComment(true)}>< BsChat /></div>
+                    <div onClick={() => handleComment()}>< BsChat /></div>
                 </div>
                 <div className='likes'>Likes:{likes}</div>
                 <div className='postDescription'>

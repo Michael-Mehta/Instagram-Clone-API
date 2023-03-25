@@ -8,14 +8,15 @@ import Comment from './Comment'
 const MainPage = ({currUser, token}) => {
   const [showPost, setShowPost] = useState(false)
   const [showComment, setShowComment] = useState(false)
+  const [pic, setPic] = useState('')
   return (
     <div>
       {showPost && < CreatePost setShowPost = {setShowPost} currUser = {currUser}/>}
-      {showComment && <Comment setShowComment={setShowComment}/> }
-   {!showPost && <div className='mainpage'>
+      {showComment && <Comment setShowComment={setShowComment} pic = {pic}/> }
+   {!showPost && !showComment && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost}/>
-        < Home token = {token} currUser = {currUser} setShowComment = {setShowComment}/>
+        < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}/>
         < Suggestions />
        
 

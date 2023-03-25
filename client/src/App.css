@@ -362,3 +362,34 @@
 .likes {
   align-self: flex-start;
 }
+
+.picComments {
+  display: flex;
+  background-color: white;
+
+}
+
+.comment {
+  background-color: white ;  
+  position: relative;
+
+
+}
+
+.actualComment {
+
+  position: absolute;
+
+
+  bottom: 0;
+
+  resize:none;
+
+  width: 58vw;
+
+  height:auto;
+ 
+
+}
+
+

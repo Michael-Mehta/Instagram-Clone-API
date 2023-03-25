@@ -13,8 +13,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
+   
     render json: @post.as_json(include: :image).merge(
-      image: @post.image.url
+      image: @post.image.url 
     )
   end
 

@@ -9,14 +9,16 @@ const MainPage = ({currUser, token}) => {
   const [showPost, setShowPost] = useState(false)
   const [showComment, setShowComment] = useState(false)
   const [pic, setPic] = useState('')
+  const [post, setPost] = useState('')
   return (
     <div>
       {showPost && < CreatePost setShowPost = {setShowPost} currUser = {currUser}/>}
-      {showComment && <Comment setShowComment={setShowComment} pic = {pic}/> }
+      {showComment && <Comment setShowComment={setShowComment} pic = {pic} post = {post}/> }
    {!showPost && !showComment && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost}/>
-        < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}/>
+        < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}
+        setPost = {setPost}/>
         < Suggestions />
        
 

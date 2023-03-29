@@ -18,6 +18,7 @@ gem 'rack-cors'
 gem "devise"
 gem "jsonapi-serializer"
 gem 'devise-jwt'
+gem 'active_model_serializers'
 gem 'dotenv-rails', groups: [:development, :test]
 
 

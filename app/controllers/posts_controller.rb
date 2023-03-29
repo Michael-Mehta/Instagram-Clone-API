@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    render json: @posts.map { |post| post.as_json(include: :image).merge(image: post.image.url) }
+    render json: @posts.map { |post| post.as_json(include: [:image, :user]).merge(image: post.image.url) }
   end
 
   # GET /posts/1

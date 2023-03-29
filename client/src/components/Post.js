@@ -98,7 +98,7 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost}) => {
 
     return (
         <div className='post'>
-            <div><p></p></div>
+            <div><p>{post.user.username}</p></div>
             <div className='picIcon'><img src={post.image} alt='naruto' />
                 <div className='heart-comment'>
 

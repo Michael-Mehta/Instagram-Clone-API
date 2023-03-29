@@ -5,7 +5,7 @@ const Comment = ({setShowComment, pic, post, currUser}) => {
 
     const [body, setBody] = useState('');
     const [comments, setComments] = useState([]);
-
+   
 
       
       

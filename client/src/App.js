@@ -7,10 +7,12 @@ import User from './components/User'
 import MainPage from './components/MainPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Profile from './components/Profile';
 
 
 const App=()=>{
   const [currUser, setCurrUser]=useState(null);
+  const [anyUser, setAnyUser] = useState(null);
   const [token, setToken] = useState('');
   const navigate = useNavigate;
 
@@ -21,13 +23,14 @@ const App=()=>{
         <BrowserRouter>
       <Routes>
         <Route path="/" element={currUser? <MainPage currUser = {currUser}
-         token = {token}/> : 
+         token = {token} setAnyUser = {setAnyUser}/> : 
         <Login currUser = {currUser}
          setCurrUser = {setCurrUser} setToken = {setToken} />} />
         <Route path="/login" element={<Login currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
         <Route path="/signup" element={<Signup currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
+        <Route path="/profile" element={<Profile user = {anyUser}/>} />
       </Routes>
     </BrowserRouter>
       

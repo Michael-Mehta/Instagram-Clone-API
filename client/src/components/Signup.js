@@ -42,7 +42,7 @@ const Signup=({currUser, setCurrUser})=>{
         const formData=new FormData(formRef.current)
         const data=Object.fromEntries(formData)
         const userInfo={
-            "user":{ email: data.email, password: data.password }
+            "user":{ username: data.username, email: data.email, password: data.password }
         }
         signup(userInfo, setCurrUser)
         e.target.reset()
@@ -60,6 +60,8 @@ const Signup=({currUser, setCurrUser})=>{
 
 
         <form ref={formRef} onSubmit={handleSubmit} >
+            <input type="text" name='username' placeholder="username" />
+            <br/>
             <input type="email" name='email' placeholder="email" />
             <br/>
             <input type="password" name='password' placeholder="password" />

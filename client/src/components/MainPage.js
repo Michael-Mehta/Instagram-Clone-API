@@ -13,7 +13,8 @@ const MainPage = ({currUser, token}) => {
   return (
     <div>
       {showPost && < CreatePost setShowPost = {setShowPost} currUser = {currUser}/>}
-      {showComment && <Comment setShowComment={setShowComment} pic = {pic} post = {post}/> }
+      {showComment && <Comment setShowComment={setShowComment}
+       pic = {pic} post = {post} currUser = {currUser}/> }
    {!showPost && !showComment && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost}/>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Comment = ({setShowComment, pic, post}) => {
+const Comment = ({setShowComment, pic, post, currUser}) => {
 
 
     const [body, setBody] = useState('');
@@ -12,7 +12,8 @@ const Comment = ({setShowComment, pic, post}) => {
         useEffect(() => {
           fetch(`http://localhost:3000/posts/${post}/comments`)
             .then(response => response.json())
-            .then(data =>  setComments(data) )
+            .then(data =>  {setComments(data)
+            console.log(data) })
             .catch(error => console.error(error));
         }, [post]);
       
@@ -30,7 +31,8 @@ const Comment = ({setShowComment, pic, post}) => {
             },
             body: JSON.stringify({
               comment: {
-                content: body
+                content: body,
+                
                
               }
             })
@@ -70,9 +72,19 @@ const Comment = ({setShowComment, pic, post}) => {
         <div>
             {comments.map(comment => (
               <div key={comment.id}>
+
+                <p>@{comment.user.username}</p>
+
+                
+                
                 <p>{comment.content}</p>
               </div>
-            ))}
+
+               
+            ))
+            
+            
+            }
           </div>
 
             <div  className='actualComment' >

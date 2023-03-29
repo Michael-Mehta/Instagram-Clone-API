@@ -12,6 +12,7 @@ const Login = ({setCurrUser, setToken}) =>{
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
    
 
 
@@ -25,6 +26,11 @@ const Login = ({setCurrUser, setToken}) =>{
         const value = event.target.value;
         setPassword(value);
     };
+
+    const handleUsernameChange = (event) => {
+      const value = event.target.value;
+      setUsername(value);
+  };
 
 
     
@@ -61,7 +67,7 @@ const Login = ({setCurrUser, setToken}) =>{
       e.preventDefault()
        
         const userInfo={
-          "user":{ email: email, password: password }
+          "user":{ username: username, email: email, password: password }
         }
         login(userInfo, setCurrUser)
         navigate("/")
@@ -88,6 +94,11 @@ const Login = ({setCurrUser, setToken}) =>{
         <div className='form'>
 
             <h1></h1>
+
+        <div> 
+        <input onChange = {handleUsernameChange} value = {username}
+         placeholder = 'Username' type = "text" id = "usernameInput"/>
+        </div>
 
         <div> 
         <input onChange = {handleEmailChange} value = {email}

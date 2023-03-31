@@ -23,14 +23,14 @@ const App=()=>{
         <BrowserRouter>
       <Routes>
         <Route path="/" element={currUser? <MainPage currUser = {currUser}
-         token = {token} setAnyUser = {setAnyUser}/> : 
+         token = {token} setAnyUser = {setAnyUser} setCurrUser = {setCurrUser}/> : 
         <Login currUser = {currUser}
          setCurrUser = {setCurrUser} setToken = {setToken} />} />
         <Route path="/login" element={<Login currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
         <Route path="/signup" element={<Signup currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
-        <Route path="/profile" element={<Profile user = {anyUser}/>} />
+        <Route path="/profile" element={<Profile user = {anyUser} currUser = {currUser}/>} />
       </Routes>
     </BrowserRouter>
       

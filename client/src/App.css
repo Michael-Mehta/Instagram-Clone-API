@@ -398,3 +398,21 @@
   font-weight: 200;
 }
 
+.avatar {
+  height: 20px;
+  width: auto;
+  border-radius: 10px;
+ 
+}
+
+.navProfile {
+  display: flex;
+
+}
+
+.profilePic {
+  height: 100px;
+  width: auto;
+  border-radius: 50px;
+}
+

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create]
     resources :comments, only: [:create, :index]
   end
-  
+  put '/users/:id/avatar', to: 'users#update_avatar'
   resources :likes, only: [:destroy]
   get 'private/test'
   get '/users/:username', to: 'users#show'

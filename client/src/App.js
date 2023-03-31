@@ -30,7 +30,8 @@ const App=()=>{
         setCurrUser = {setCurrUser} />} />
         <Route path="/signup" element={<Signup currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
-        <Route path="/profile" element={<Profile user = {anyUser} currUser = {currUser}/>} />
+        <Route path="/profile" element={<Profile user = {anyUser} currUser = {currUser}
+         setAnyUser = {setAnyUser} setCurrUser/>} />
       </Routes>
     </BrowserRouter>
       

@@ -42,6 +42,11 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser}) => {
 
   },[]);
 
+
+  const handleHome = () => {
+    navigate('/')
+  }
+
   const handleProfile = () => {
     fetch(`http://localhost:3000/users/${currUser.username}`, {
         
@@ -82,7 +87,7 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser}) => {
         <div className='naVItems'>
           <h1>Instagram</h1>
 
-        <div><div><BsFillHouseDoorFill/></div><div>Home</div></div>
+        <div onClick={() => handleHome()}><div><BsFillHouseDoorFill/></div><div>Home</div></div>
         <div><div><BsSearch/></div><div>Search</div></div>
         <div><div><BsCompass/></div><div>Explore</div></div>
         <div><div><BiMoviePlay/></div><div>Reels</div></div>

@@ -442,3 +442,16 @@
 }
 
 
+.imagePic {
+  
+  width: 400px;
+  height: 500px;
+  overflow: hidden;
+}
+
+
+.imagePics {
+   width: 400px;
+   height: auto;
+
+}

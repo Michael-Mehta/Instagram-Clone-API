@@ -104,8 +104,8 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile}) => {
 
          {profile ?
            (<img src={post.image} alt='pic' className='profilePost' />):(<div className='post'>
-            <div><p>{post.user.username}</p></div>
-            <div className='picIcon'><div className='imagePic'><img src={post.image} alt='pic' className='imagePics'  /></div>
+            <div className='postTop'><div><img src = {post.user_avatar_url} className = 'avatar'/></div><div>{post.username}</div></div>
+            <div className='picIcon'><div className='imagePic'><img src={post.image_url} alt='pic' className='imagePics'  /></div>
                 <div className='heart-comment'>
 
           

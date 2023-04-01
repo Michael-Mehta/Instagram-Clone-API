@@ -174,8 +174,10 @@
 .picIcon {
   display: flex;
   flex-direction: column;
-  
+
 }
+
+
 
 @font-face {
   font-family: billabong;
@@ -414,5 +416,29 @@
   height: 100px;
   width: auto;
   border-radius: 50px;
+
 }
+
+.postsProfile {
+
+
+  margin-top: 10vh;
+  margin-left: 27vw;
+
+  display:grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px;
+  gap: 10px;
+  row-gap: 50px;
+
+ 
+}
+
+
+.profilePost{
+  height: 200px;
+  width: 160px;
+ 
+}
+
 

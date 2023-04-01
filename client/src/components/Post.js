@@ -4,7 +4,7 @@ import img from './naruto.jpg'
 import { BsHeart, BsChat } from 'react-icons/bs';
 
 
-const Post = ({ post, currUser, setShowComment, setPic, setPost}) => {
+const Post = ({ post, currUser, setShowComment, setPic, setPost, profile}) => {
     const [liked, setLiked] = useState(post.liked_by_current_user);
      
     const [likes, setLikes] = useState(0)
@@ -97,9 +97,15 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost}) => {
 
 
     return (
-        <div className='post'>
+
+        
+        <div>
+
+
+         {profile ?
+           (<img src={post.image} alt='pic' className='profilePost' />):(<div className='post'>
             <div><p>{post.user.username}</p></div>
-            <div className='picIcon'><img src={post.image} alt='naruto' />
+            <div className='picIcon'><img src={post.image} alt='pic' className = 'imagePic' />
                 <div className='heart-comment'>
 
           
@@ -115,8 +121,12 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost}) => {
                     <p>View all comments</p>
                 </div>
             </div>
+        </div>)
+        }
 
+    
         </div>
+    
     );
 
 

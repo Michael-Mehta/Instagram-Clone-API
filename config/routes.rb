@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :likes, only: [:destroy]
   get 'private/test'
   get '/users/:username', to: 'users#show'
+  get '/users/:id/posts', to: 'users#posts'
   devise_for :users, 
     path: '', 
     path_names: {

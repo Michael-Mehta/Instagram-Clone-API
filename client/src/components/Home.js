@@ -7,7 +7,7 @@ const Home = ({token, currUser, setShowComment, setPic, setPost}) => {
 
   const [hasLiked, setHasLiked] = useState(false);
   const [likes, setLikes] = useState(0);
-  
+  const [profile, setProfile] = useState(false)
 
     const [posts, setPosts] = useState([])
 
@@ -77,6 +77,7 @@ const Home = ({token, currUser, setShowComment, setPic, setPost}) => {
              setShowComment = {setShowComment}
              setPic = {setPic}
              setPost = {setPost}
+             profile = {profile}
              />
         ))
 

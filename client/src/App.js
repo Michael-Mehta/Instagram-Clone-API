@@ -14,6 +14,11 @@ const App=()=>{
   const [currUser, setCurrUser]=useState(null);
   const [anyUser, setAnyUser] = useState(null);
   const [token, setToken] = useState('');
+  const [post, setPost] = useState('');
+  const [pic, setPic] = useState('');
+  const [showPost, setShowPost] = useState(false)
+  const [showComment, setShowComment] = useState(false)
+ 
   const navigate = useNavigate;
 
  
@@ -23,7 +28,10 @@ const App=()=>{
         <BrowserRouter>
       <Routes>
         <Route path="/" element={currUser? <MainPage currUser = {currUser}
-         token = {token} setAnyUser = {setAnyUser} setCurrUser = {setCurrUser}/> : 
+         token = {token} setAnyUser = {setAnyUser} setCurrUser = {setCurrUser}
+         post = {post} setPost = {setPost} pic = {pic}
+         setPic = {setPic} showPost = {showPost} setShowPost = {setShowPost}
+         showComment = {showComment} setShowComment = {setShowComment}/> : 
         <Login currUser = {currUser}
          setCurrUser = {setCurrUser} setToken = {setToken} />} />
         <Route path="/login" element={<Login currUser = {currUser}
@@ -31,7 +39,8 @@ const App=()=>{
         <Route path="/signup" element={<Signup currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
         <Route path="/profile" element={<Profile user = {anyUser} currUser = {currUser}
-         setAnyUser = {setAnyUser} setCurrUser/>} />
+         setAnyUser = {setAnyUser} setCurrUser = {setCurrUser} setPost = {setPost}
+         setPic = {setPic}/>} setShowComment = {setShowComment} />
       </Routes>
     </BrowserRouter>
       

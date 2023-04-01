@@ -5,12 +5,11 @@ import Suggestions from './Suggestions'
 import CreatePost from './CreatePost'
 import Comment from './Comment'
 
-const MainPage = ({currUser, token, setAnyUser, setCurrUser}) => {
-  const [showPost, setShowPost] = useState(false)
-  const [showComment, setShowComment] = useState(false)
+const MainPage = ({currUser, token, setAnyUser, setCurrUser, post, setPost, pic, setPic, showPost,
+setShowPost, showComment, setShowComment}) => {
+  
  
-  const [pic, setPic] = useState('')
-  const [post, setPost] = useState('')
+ 
   return (
     <div>
       {showPost && < CreatePost setShowPost = {setShowPost} currUser = {currUser}/>}
@@ -20,7 +19,7 @@ const MainPage = ({currUser, token, setAnyUser, setCurrUser}) => {
    {!showPost && !showComment && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
-         setCurrUser = {setCurrUser}/>
+         setCurrUser = {setCurrUser} />
         < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}
         setPost = {setPost}/>
         < Suggestions />

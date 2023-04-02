@@ -19,6 +19,7 @@ gem "devise"
 gem "jsonapi-serializer"
 gem 'devise-jwt'
 gem 'active_model_serializers'
+gem 'followability'
 gem 'dotenv-rails', groups: [:development, :test]
 
 

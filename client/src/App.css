@@ -459,3 +459,11 @@
 .postTop{
   display: flex;
 }
+
+.postTop:hover {
+  cursor:pointer;
+}
+
+.postcomment:hover{
+  cursor:pointer;
+}

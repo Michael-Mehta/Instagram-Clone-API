@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css'
-import img from './naruto.jpg'
+
+import { useNavigate } from "react-router-dom";
 import { BsHeart, BsChat } from 'react-icons/bs';
 
 
-const Post = ({ post, currUser, setShowComment, setPic, setPost, profile}) => {
+const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAnyUser}) => {
+
+
     const [liked, setLiked] = useState(post.liked_by_current_user);
      
     const [likes, setLikes] = useState(0)
@@ -16,6 +19,13 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile}) => {
 
     const [red, setRed] = useState(false)
 
+
+    const navigate = useNavigate();
+
+
+
+
+
     useEffect(() => {
 
 
@@ -25,6 +35,42 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile}) => {
 
 
 
+
+    const handleProfile = () => {
+        fetch(`http://localhost:3000/users/${post.username}`, {
+            
+          method: 'GET',
+    
+          headers: {
+    
+            
+    
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+          }
+    
+          })
+          .then((response) => response.json())
+          .then((data) => {
+              
+              console.log(data)
+             
+    
+              setAnyUser(data)
+            
+              navigate('/profile')
+              
+          })
+          .catch((error) => {
+              console.log('Error:', error)
+          })
+    
+    
+    
+          
+    
+         
+      }
+    
     
 
    
@@ -91,7 +137,7 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile}) => {
 
     const handleComment = () => {
         setShowComment(true)
-        setPic(post.image)
+        setPic(post.image_url)
         setPost(post.id)
     }
 
@@ -104,7 +150,8 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile}) => {
 
          {profile ?
            (<img src={post.image} alt='pic' className='profilePost' />):(<div className='post'>
-            <div className='postTop'><div><img src = {post.user_avatar_url} className = 'avatar'/></div><div>{post.username}</div></div>
+            <div className='postTop' onClick={() => handleProfile()}><div><img src = {post.user_avatar_url} className = 'avatar'/></div>
+            <div>{post.username}</div></div>
             <div className='picIcon'><div className='imagePic'><img src={post.image_url} alt='pic' className='imagePics'  /></div>
                 <div className='heart-comment'>
 

@@ -3,7 +3,7 @@ import Post from './Post';
 import '../App.css'
 
 
-const Home = ({token, currUser, setShowComment, setPic, setPost}) => {
+const Home = ({token, currUser, setShowComment, setPic, setPost, setAnyUser}) => {
 
   const [hasLiked, setHasLiked] = useState(false);
   const [likes, setLikes] = useState(0);
@@ -78,6 +78,7 @@ const Home = ({token, currUser, setShowComment, setPic, setPost}) => {
              setPic = {setPic}
              setPost = {setPost}
              profile = {profile}
+             setAnyUser = {setAnyUser}
              />
         ))
 

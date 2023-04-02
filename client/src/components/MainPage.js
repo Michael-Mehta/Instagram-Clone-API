@@ -21,7 +21,7 @@ setShowPost, showComment, setShowComment}) => {
         <NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
          setCurrUser = {setCurrUser} />
         < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}
-        setPost = {setPost}/>
+        setPost = {setPost} setAnyUser = {setAnyUser}/>
         < Suggestions />
        
 

@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
          has_one_attached :avatar
 
-
+         followability
 
   def as_json(options = {})
     super(options.merge(methods: [:avatar_url]))

@@ -11,6 +11,8 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     const [profile, setProfile] = useState(true)
     const [following, setFollowing] = useState(false)
     const [posts, setPosts] = useState([])
+    const [change, setChange] = useState(true)
+    const [newUser, setNewUser] = useState(user)
 
     useEffect(() => {
 
@@ -30,9 +32,38 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
             }
         })
 
+
+        fetch(`http://localhost:3000/users/${user.username}`, {
+        
+      method: 'GET',
+
+      headers: {
+
+        
+
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      }
+
+      })
+      .then((response) => response.json())
+      .then((data) => {
+          
+          console.log(data)
+         
+
+          setNewUser(data)
+        
+          
+          
+      })
+      .catch((error) => {
+          console.log('Error:', error)
+      })
+
         
         console.log(user.avatar_url)
-    },[]);
+        setChange(false)
+    },[change]);
 
 
 
@@ -53,6 +84,10 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
         }).catch((error) => {
             console.log('Error:', error)
         })
+
+        
+        setFollowing(true)
+        setChange(true)
     }
 
 
@@ -74,6 +109,9 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
         }).catch((error) => {
             console.log('Error:', error)
         })
+
+        setFollowing(false)
+        setChange(true)
     }
 
 
@@ -137,7 +175,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
          <div className='bio'><div className='bio-image'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /></div><div className='bio-rest'><div className='bio-top'><h2>{user.username}</h2>
          {!personal && !following && <button className="follow-button" onClick = {() => handleFollow()}>Follow</button>}
          {!personal && following && <button className='unfollow-button' onClick={() => handleUnfollow()}> Unfollow</button>}</div>
-        <div className='bio-follow'><div>{user.followers.length} Followers</div><div>{user.following.length} Following</div></div></div></div>
+        <div className='bio-follow'><div>{newUser.followers.length} Followers</div><div>{newUser.following.length} Following</div></div></div></div>
          {personal && <UpdateUser currUser = {currUser} />}
 
 

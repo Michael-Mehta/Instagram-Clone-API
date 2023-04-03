@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
 import Home from './Home'
 import Suggestions from './Suggestions'
 import CreatePost from './CreatePost'
 import Comment from './Comment'
+import Explore from './Explore'
 
 const MainPage = ({currUser, token, setAnyUser, setCurrUser, post, setPost, pic, setPic, showPost,
-setShowPost, showComment, setShowComment}) => {
+setShowPost, showComment, setShowComment, setExplore, explore}) => {
   
+
+  useEffect(() => {
+
+    console.log(setExplore)
+  },[]);
  
  
   return (
@@ -15,11 +21,17 @@ setShowPost, showComment, setShowComment}) => {
       {showPost && < CreatePost setShowPost = {setShowPost} currUser = {currUser}/>}
       {showComment && <Comment setShowComment={setShowComment}
        pic = {pic} post = {post} currUser = {currUser}/> }
+
+       {explore &&
+         <Explore currUser = {currUser} setShowComment = {setShowComment}
+        setPic = {setPic} setPost = {setPost} setAnyUser = {setAnyUser}
+        setShowPost = {setShowPost} setCurrUser = {setCurrUser} setExplore = {setExplore} />
+        }
       
-   {!showPost && !showComment && <div className='mainpage'>
+   {!showPost && !showComment && !explore && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
-         setCurrUser = {setCurrUser} />
+         setCurrUser = {setCurrUser} setExplore = {setExplore} />
         < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}
         setPost = {setPost} setAnyUser = {setAnyUser}/>
         < Suggestions />
@@ -27,6 +39,8 @@ setShowPost, showComment, setShowComment}) => {
 
     </div>
    }
+
+
     </div>
   )
 }

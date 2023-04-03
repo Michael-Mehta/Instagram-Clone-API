@@ -16,8 +16,9 @@ const App=()=>{
   const [token, setToken] = useState('');
   const [post, setPost] = useState('');
   const [pic, setPic] = useState('');
-  const [showPost, setShowPost] = useState(false)
-  const [showComment, setShowComment] = useState(false)
+  const [showPost, setShowPost] = useState(false);
+  const [showComment, setShowComment] = useState(false);
+  const [explore, setExplore] = useState(false);
  
   const navigate = useNavigate;
 
@@ -31,7 +32,8 @@ const App=()=>{
          token = {token} setAnyUser = {setAnyUser} setCurrUser = {setCurrUser}
          post = {post} setPost = {setPost} pic = {pic}
          setPic = {setPic} showPost = {showPost} setShowPost = {setShowPost}
-         showComment = {showComment} setShowComment = {setShowComment}/> : 
+         showComment = {showComment} setShowComment = {setShowComment}
+         setExplore = {setExplore} explore = {explore}/> : 
         <Login currUser = {currUser}
          setCurrUser = {setCurrUser} setToken = {setToken} />} />
         <Route path="/login" element={<Login currUser = {currUser}
@@ -40,7 +42,7 @@ const App=()=>{
         setCurrUser = {setCurrUser} />} />
         <Route path="/profile" element={<Profile user = {anyUser} currUser = {currUser}
          setAnyUser = {setAnyUser} setCurrUser = {setCurrUser} setPost = {setPost}
-         setPic = {setPic}/>} setShowComment = {setShowComment} />
+         setPic = {setPic} setShowComment = {setShowComment} setExplore = {setExplore} /> }/>
       </Routes>
     </BrowserRouter>
       

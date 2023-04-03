@@ -4,7 +4,7 @@ import UpdateUser from "./UpdateUser";
 import NavBar from './NavBar';
 import Post from './Post';
 
-const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComment, setPic}) => {
+const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComment, setPic, setExplore}) => {
 
     const [showPost, setShowPost] = useState(false)
     const [personal, setPersonal] = useState(false)
@@ -169,7 +169,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     return(
     <div className='profilePage'>
           <div><NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
-         setCurrUser = {setCurrUser}/>
+         setCurrUser = {setCurrUser} setExplore = {setExplore}/>
          </div>
          <div>
          <div className='bio'><div className='bio-image'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /></div><div className='bio-rest'><div className='bio-top'><h2>{user.username}</h2>

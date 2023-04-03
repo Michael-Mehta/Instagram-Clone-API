@@ -552,3 +552,46 @@
   margin-left: 200%;
 }
 
+.explore-nav {
+  height: 100vh;
+}
+
+.posts-explore {
+  margin-top: -100vh;
+ 
+
+  display:grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px;
+  gap: 10px;
+  row-gap: 50px;
+}
+
+
+.explorePost{
+  height: 240px;
+  width: 192px;
+  
+ 
+}
+
+
+.postsExplore {
+
+  
+  margin-top: 10vh;
+  margin-left: 35vw;
+
+  display:grid;
+
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px;
+  gap:10px;
+  row-gap: 100px;
+
+  
+ 
+  
+
+ 
+}

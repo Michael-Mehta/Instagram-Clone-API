@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsFillHouseDoorFill, BsSearch, BsCompass,
   BsChatText, BsHeart, BsPlusSquare} from 'react-icons/bs';
  import { BiMoviePlay } from "react-icons/bi";
  import { GiDove, GiHamburgerMenu } from "react-icons/gi";
  import { useNavigate } from "react-router-dom";
 
-const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser}) => {
+const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore}) => {
 
   const navigate = useNavigate();
 
@@ -28,7 +28,8 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser}) => {
           
           console.log(data)
          
-
+          console.log(setCurrUser)
+          console.log(setExplore)
           setCurrUser(data)
         
           
@@ -44,6 +45,10 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser}) => {
 
 
   const handleHome = () => {
+    setShowPost(false)
+   
+    setExplore(false)
+
     navigate('/')
   }
 
@@ -82,6 +87,16 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser}) => {
      
   }
 
+
+  const handleExplore = (e) => {
+
+    e.preventDefault();
+
+    navigate('/')
+
+    setExplore(true)
+  }
+
   return (
     <div className='naVbar'>
         <div className='naVItems'>
@@ -89,7 +104,7 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser}) => {
 
         <div onClick={() => handleHome()}><div><BsFillHouseDoorFill/></div><div>Home</div></div>
         <div><div><BsSearch/></div><div>Search</div></div>
-        <div><div><BsCompass/></div><div>Explore</div></div>
+        <div onClick={(e) => handleExplore(e) }><div><BsCompass/></div><div>Explore</div></div>
         <div><div><BiMoviePlay/></div><div>Reels</div></div>
         <div><div><BsChatText/></div><div>Messages</div></div>
         <div><div><BsHeart/></div><div>Notifications</div></div>

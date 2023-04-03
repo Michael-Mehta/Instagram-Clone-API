@@ -21,6 +21,13 @@ class User < ApplicationRecord
 
          followability
 
+
+
+  def unfollow(user)
+
+    followerable_relationships.where(followable_id: user.id).destroy_all
+  end
+
   def as_json(options = {})
     super(options.merge(methods: [:avatar_url]))
   end

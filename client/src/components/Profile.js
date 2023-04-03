@@ -9,6 +9,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     const [showPost, setShowPost] = useState(false)
     const [personal, setPersonal] = useState(false)
     const [profile, setProfile] = useState(true)
+    const [following, setFollowing] = useState(false)
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
@@ -17,13 +18,63 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
         if(user.username === currUser.username)
         {
             setPersonal(true)
+
+            
         }
+
+
+        currUser.following.map((follow) => {
+            if (follow.id === user.id)
+            {
+                setFollowing(true)
+            }
+        })
 
         
         console.log(user.avatar_url)
     },[]);
 
 
+
+
+    const handleFollow = () => {
+
+        fetch(`http://localhost:3000/profile/${user.id}/follow`, {
+            
+        
+        method: 'POST',
+
+        headers: {
+
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+
+        }
+
+        }).catch((error) => {
+            console.log('Error:', error)
+        })
+    }
+
+
+
+
+    const handleUnfollow = () => {
+
+        fetch(`http://localhost:3000/profile/${user.id}/unfollow`, {
+            
+        
+        method: 'POST',
+
+        headers: {
+
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+
+        }
+
+        }).catch((error) => {
+            console.log('Error:', error)
+        })
+    }
 
 
     
@@ -83,7 +134,9 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
          setCurrUser = {setCurrUser}/>
          </div>
          <div>
-         <div className='bio'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /><h2>User Profile: {user.username}</h2></div>
+         <div className='bio'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /><h2>User Profile: {user.username}</h2>
+         {!personal && !following && <button className="follow-button" onClick = {() => handleFollow()}>Follow</button>}
+         {!personal && following && <button className='unfollow-button' onClick={() => handleUnfollow()}>Unfollow</button>}</div>
          {personal && <UpdateUser currUser = {currUser} />}
 
 

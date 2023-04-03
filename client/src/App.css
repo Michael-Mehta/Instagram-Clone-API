@@ -413,17 +413,18 @@
 }
 
 .profilePic {
-  height: 100px;
+  height: 120px;
   width: auto;
-  border-radius: 50px;
+  border-radius: 60px;
 
+  margin-top: 4vh;
 }
 
 .postsProfile {
 
 
   margin-top: 10vh;
-  margin-left: 27vw;
+  margin-left: 35vw;
 
   display:grid;
   grid-template-columns: 200px 200px 200px;
@@ -501,3 +502,53 @@
 .unfollow-button:hover {
   background-color: #7a7a7a;
 }
+
+.bio-follow {
+  display: flex;
+
+  margin-left: 30vw;
+
+
+  
+}
+
+
+.bio-follow div{
+ 
+
+  padding: 10px;
+
+  
+}
+
+.bio-top {
+  display: flex;
+  margin-left: 30vw;
+
+
+}
+
+
+
+.bio-top button {
+  height: 50%;
+  margin-top: 5vh;
+  margin-left: 3vw;
+
+}
+
+.bio-top h2 {
+  padding: 10px;
+  
+}
+
+.bio {
+  display: flex;
+  justify-content: center;
+}
+
+
+.bio-image img{
+  margin-left: 200%;
+}
+

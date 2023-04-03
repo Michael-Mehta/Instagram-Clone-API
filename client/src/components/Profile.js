@@ -134,9 +134,10 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
          setCurrUser = {setCurrUser}/>
          </div>
          <div>
-         <div className='bio'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /><h2>User Profile: {user.username}</h2>
+         <div className='bio'><div className='bio-image'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /></div><div className='bio-rest'><div className='bio-top'><h2>{user.username}</h2>
          {!personal && !following && <button className="follow-button" onClick = {() => handleFollow()}>Follow</button>}
-         {!personal && following && <button className='unfollow-button' onClick={() => handleUnfollow()}>Unfollow</button>}</div>
+         {!personal && following && <button className='unfollow-button' onClick={() => handleUnfollow()}> Unfollow</button>}</div>
+        <div className='bio-follow'><div>{user.followers.length} Followers</div><div>{user.following.length} Following</div></div></div></div>
          {personal && <UpdateUser currUser = {currUser} />}
 
 

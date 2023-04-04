@@ -595,3 +595,13 @@
 
  
 }
+
+.explorePost:hover {
+  filter: brightness(70%);
+}
+
+
+.profilePost:hover {
+  filter: brightness(70%);
+}
+

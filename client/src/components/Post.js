@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { BsHeart, BsChat } from 'react-icons/bs';
 
 
-const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAnyUser}) => {
+const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAnyUser, setProfile}) => {
 
 
     const [liked, setLiked] = useState(post.liked_by_current_user);
@@ -30,14 +30,60 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
 
 
         setLikes(post.likes_count)
+        console.log(post)
   
     },[])
 
 
 
 
+
+
+
     const handleProfile = () => {
-        fetch(`http://localhost:3000/users/${post.username}`, {
+        fetch(`http://localhost:3000/users/${post.user_id}`, {
+            
+          method: 'GET',
+    
+          headers: {
+    
+            
+    
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+          }
+    
+          })
+          .then((response) => response.json())
+          .then((data) => {
+              
+              console.log(data)
+             
+    
+              setAnyUser(data)
+
+              
+            
+              setProfile(true)
+              
+          })
+          .catch((error) => {
+              console.log('Error:', error)
+          })
+    
+    
+    
+          
+    
+         
+      }
+
+
+
+
+
+
+      const handleProfileCommentAvatar = () => {
+        fetch(`http://localhost:3000/users/${post.user_id}`, {
             
           method: 'GET',
     
@@ -57,7 +103,7 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
     
               setAnyUser(data)
             
-              navigate('/profile')
+            
               
           })
           .catch((error) => {
@@ -136,9 +182,19 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
 
 
     const handleComment = () => {
+
+        
         setShowComment(true)
         setPic(post.image_url)
-        setPost(post.id)
+        setPost(post)
+    }
+
+
+    const handleProfileComment = () => {
+        handleProfileCommentAvatar()
+        setShowComment(true)
+        setPic(post.image)
+        setPost(post)
     }
 
 
@@ -149,7 +205,7 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
 
 
          {profile ?
-           (<img src={post.image} alt='pic' className='profilePost' />):(<div className='post'>
+           (<img src={post.image} alt='pic' className='profilePost' onClick={() => handleProfileComment()}/>):(<div className='post'>
             <div className='postTop' onClick={() => handleProfile()}><div><img src = {post.user_avatar_url} className = 'avatar'/></div>
             <div>{post.username}</div></div>
             <div className='picIcon'><div className='imagePic'><img src={post.image_url} alt='pic' className='imagePics'  /></div>

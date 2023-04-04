@@ -14,7 +14,9 @@ class PostsController < ApplicationController
         user_avatar_url: url_for(post.user.avatar),
         image_url: post.image.url,
         username: post.user.username,
-        likes_count: post.likes_count
+        likes_count: post.likes_count,
+        user_id: post.user.id
+
       }
     end
 

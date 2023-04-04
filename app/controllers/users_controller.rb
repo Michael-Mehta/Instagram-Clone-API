@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     include ActiveStorage::SetCurrent
     
     def show
-        @user = User.find_by(username: params[:username])
+        @user = User.find_by(id: params[:id])
         render json: { id: @user.id, email: @user.email, username: @user.username, avatar_url: url_for(@user.avatar),
          followers: @user.followers, following: @user.following }
       end

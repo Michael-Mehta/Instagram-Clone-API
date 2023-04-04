@@ -4,11 +4,11 @@ import UpdateUser from "./UpdateUser";
 import NavBar from './NavBar';
 import Post from './Post';
 
-const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComment, setPic, setExplore}) => {
+const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComment, setPic, setExplore, setProfile, setProfileComment}) => {
 
     const [showPost, setShowPost] = useState(false)
     const [personal, setPersonal] = useState(false)
-    const [profile, setProfile] = useState(true)
+    const [myprofile, setMyProfile] = useState(true)
     const [following, setFollowing] = useState(false)
     const [posts, setPosts] = useState([])
     const [change, setChange] = useState(true)
@@ -24,6 +24,8 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
             
         }
 
+        console.log(user)
+
 
         currUser.following.map((follow) => {
             if (follow.id === user.id)
@@ -33,7 +35,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
         })
 
 
-        fetch(`http://localhost:3000/users/${user.username}`, {
+        fetch(`http://localhost:3000/users/${user.id}`, {
         
       method: 'GET',
 
@@ -51,7 +53,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
           console.log(data)
          
 
-          setNewUser(data)
+          setAnyUser(data)
         
           
           
@@ -63,6 +65,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
         
         console.log(user.avatar_url)
         setChange(false)
+        setProfileComment(true)
     },[change]);
 
 
@@ -159,6 +162,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     
       return () => (mounted = false);
     
+
     
     }, []);
 
@@ -169,7 +173,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     return(
     <div className='profilePage'>
           <div><NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
-         setCurrUser = {setCurrUser} setExplore = {setExplore}/>
+         setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}/>
          </div>
          <div>
          <div className='bio'><div className='bio-image'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /></div><div className='bio-rest'><div className='bio-top'><h2>{user.username}</h2>
@@ -191,7 +195,9 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
              setShowComment = {setShowComment}
              setPic = {setPic}
              setPost = {setPost}
-             profile = {profile}
+             setAnyUser = {setAnyUser}
+             profile = {myprofile}
+             setProfile = {setProfile}
              />
         ))
 

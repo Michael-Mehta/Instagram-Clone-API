@@ -5,10 +5,13 @@ import Suggestions from './Suggestions'
 import CreatePost from './CreatePost'
 import Comment from './Comment'
 import Explore from './Explore'
+import Profile from './Profile'
 
 const MainPage = ({currUser, token, setAnyUser, setCurrUser, post, setPost, pic, setPic, showPost,
-setShowPost, showComment, setShowComment, setExplore, explore}) => {
+setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfile, anyUser}) => {
   
+
+  const [profileComment, setProfileComment] = useState(false)
 
   useEffect(() => {
 
@@ -20,20 +23,30 @@ setShowPost, showComment, setShowComment, setExplore, explore}) => {
     <div>
       {showPost && < CreatePost setShowPost = {setShowPost} currUser = {currUser}/>}
       {showComment && <Comment setShowComment={setShowComment}
-       pic = {pic} post = {post} currUser = {currUser}/> }
+       pic = {pic} post = {post} currUser = {currUser} setAnyUser = {setAnyUser}
+       anyUser = {anyUser} setProfile = {setProfile} setExplore = {setExplore} 
+       profileComment = {profileComment}/> }
 
        {explore &&
          <Explore currUser = {currUser} setShowComment = {setShowComment}
         setPic = {setPic} setPost = {setPost} setAnyUser = {setAnyUser}
-        setShowPost = {setShowPost} setCurrUser = {setCurrUser} setExplore = {setExplore} />
+        setShowPost = {setShowPost} setCurrUser = {setCurrUser} setExplore = {setExplore}
+        setProfile = {setProfile} setProfileComment = {setProfileComment} />
+        }
+
+        {profile && <Profile user = {anyUser} currUser = {currUser}
+         setAnyUser = {setAnyUser} setCurrUser = {setCurrUser} setPost = {setPost}
+         setPic = {setPic} setShowComment = {setShowComment} setExplore = {setExplore}
+          setProfile = {setProfile} setProfileComment = {setProfileComment}/>
+        
         }
       
-   {!showPost && !showComment && !explore && <div className='mainpage'>
+   {!showPost && !showComment && !explore && !profile && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
-         setCurrUser = {setCurrUser} setExplore = {setExplore} />
+         setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}/>
         < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}
-        setPost = {setPost} setAnyUser = {setAnyUser}/>
+        setPost = {setPost} setAnyUser = {setAnyUser} setProfile = {setProfile} setProfileComment = {setProfileComment}/>
         < Suggestions />
        
 

@@ -3,10 +3,10 @@ import ExplorePosts from './ExplorePosts'
 import NavBar from './NavBar'
 
 
-const Explore = ({currUser, setShowComment, setPic, setPost, setAnyUser, setShowPost, setCurrUser, setExplore}) => {
+const Explore = ({currUser, setShowComment, setPic, setPost, setAnyUser, setShowPost, setCurrUser, setExplore, setProfile, setProfileComment}) => {
 
     const [posts, setPosts] = useState([])
-    const [profile, setProfile] = useState(false)
+    const [myprofile, setMyProfile] = useState(false)
 
 
     useEffect(() => {
@@ -36,6 +36,8 @@ const Explore = ({currUser, setShowComment, setPic, setPost, setAnyUser, setShow
           console.log('Error:', error)
       })
 
+
+      setProfileComment(false)
     },[]);
 
 
@@ -43,7 +45,7 @@ const Explore = ({currUser, setShowComment, setPic, setPost, setAnyUser, setShow
         <div className='explorePage'>
 
 <div className='explore-nav'><NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
-         setCurrUser = {setCurrUser} setExplore = {setExplore}/></div>
+         setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}/></div>
 
 
 <div className='posts-explore'>
@@ -56,8 +58,10 @@ const Explore = ({currUser, setShowComment, setPic, setPost, setAnyUser, setShow
              setShowComment = {setShowComment}
              setPic = {setPic}
              setPost = {setPost}
-             profile = {profile}
+             profile = {myprofile}
              setAnyUser = {setAnyUser}
+             setProfile = {setProfile}
+             
              />
         ))
 

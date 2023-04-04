@@ -3,11 +3,11 @@ import Post from './Post';
 import '../App.css'
 
 
-const Home = ({token, currUser, setShowComment, setPic, setPost, setAnyUser}) => {
+const Home = ({token, currUser, setShowComment, setPic, setPost, setAnyUser, setProfileComment, setProfile}) => {
 
   const [hasLiked, setHasLiked] = useState(false);
   const [likes, setLikes] = useState(0);
-  const [profile, setProfile] = useState(false)
+  const [myprofile, setMyProfile] = useState(false)
 
     const [posts, setPosts] = useState([])
 
@@ -49,6 +49,7 @@ const Home = ({token, currUser, setShowComment, setPic, setPost, setAnyUser}) =>
     
     
      getPosts()
+     setProfileComment(false)
     
     
       return () => (mounted = false);
@@ -58,6 +59,8 @@ const Home = ({token, currUser, setShowComment, setPic, setPost, setAnyUser}) =>
 
 
 
+
+    
    
     
 
@@ -77,8 +80,9 @@ const Home = ({token, currUser, setShowComment, setPic, setPost, setAnyUser}) =>
              setShowComment = {setShowComment}
              setPic = {setPic}
              setPost = {setPost}
-             profile = {profile}
+             profile = {myprofile}
              setAnyUser = {setAnyUser}
+             setProfile = {setProfile}
              />
         ))
 

@@ -19,6 +19,8 @@ const App=()=>{
   const [showPost, setShowPost] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [explore, setExplore] = useState(false);
+  const [profile, setProfile] = useState(false);
+  
  
   const navigate = useNavigate;
 
@@ -33,16 +35,15 @@ const App=()=>{
          post = {post} setPost = {setPost} pic = {pic}
          setPic = {setPic} showPost = {showPost} setShowPost = {setShowPost}
          showComment = {showComment} setShowComment = {setShowComment}
-         setExplore = {setExplore} explore = {explore}/> : 
+         setExplore = {setExplore} explore = {explore} profile = {profile}
+         setProfile = {setProfile} anyUser = {anyUser}/> : 
         <Login currUser = {currUser}
          setCurrUser = {setCurrUser} setToken = {setToken} />} />
         <Route path="/login" element={<Login currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
         <Route path="/signup" element={<Signup currUser = {currUser}
         setCurrUser = {setCurrUser} />} />
-        <Route path="/profile" element={<Profile user = {anyUser} currUser = {currUser}
-         setAnyUser = {setAnyUser} setCurrUser = {setCurrUser} setPost = {setPost}
-         setPic = {setPic} setShowComment = {setShowComment} setExplore = {setExplore} /> }/>
+        
       </Routes>
     </BrowserRouter>
       

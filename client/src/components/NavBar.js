@@ -5,13 +5,13 @@ import { BsFillHouseDoorFill, BsSearch, BsCompass,
  import { GiDove, GiHamburgerMenu } from "react-icons/gi";
  import { useNavigate } from "react-router-dom";
 
-const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore}) => {
+const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore, setProfile}) => {
 
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users/${currUser.username}`, {
+    fetch(`http://localhost:3000/users/${currUser.id}`, {
         
       method: 'GET',
 
@@ -49,11 +49,13 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore}) =>
    
     setExplore(false)
 
+    setProfile(false)
+
     navigate('/')
   }
 
   const handleProfile = () => {
-    fetch(`http://localhost:3000/users/${currUser.username}`, {
+    fetch(`http://localhost:3000/users/${currUser.id}`, {
         
       method: 'GET',
 
@@ -73,7 +75,8 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore}) =>
 
           setAnyUser(data)
         
-          navigate('/profile')
+          setExplore(false)
+          setProfile(true)
           
       })
       .catch((error) => {
@@ -93,6 +96,8 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore}) =>
     e.preventDefault();
 
     navigate('/')
+    
+    setProfile(false)
 
     setExplore(true)
   }

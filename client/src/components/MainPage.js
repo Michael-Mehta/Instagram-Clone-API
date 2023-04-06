@@ -6,17 +6,16 @@ import CreatePost from './CreatePost'
 import Comment from './Comment'
 import Explore from './Explore'
 import Profile from './Profile'
+import Followers from './Followers'
 
 const MainPage = ({currUser, token, setAnyUser, setCurrUser, post, setPost, pic, setPic, showPost,
 setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfile, anyUser}) => {
   
 
   const [profileComment, setProfileComment] = useState(false)
+  
 
-  useEffect(() => {
-
-    console.log(setExplore)
-  },[]);
+  
  
  
   return (
@@ -37,11 +36,14 @@ setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfi
         {profile && <Profile user = {anyUser} currUser = {currUser}
          setAnyUser = {setAnyUser} setCurrUser = {setCurrUser} setPost = {setPost}
          setPic = {setPic} setShowComment = {setShowComment} setExplore = {setExplore}
-          setProfile = {setProfile} setProfileComment = {setProfileComment}/>
+          setProfile = {setProfile} setProfileComment = {setProfileComment} />
         
         }
+
+
+        
       
-   {!showPost && !showComment && !explore && !profile && <div className='mainpage'>
+   {!showPost && !explore && !profile && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
          setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}/>

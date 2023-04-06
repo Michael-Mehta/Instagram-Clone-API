@@ -115,7 +115,7 @@ const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setP
 
 
     return(
-        <div className='postCreateBackground'>
+        <div className='followersCreateBackground'>
 
       
       <div className='x' onClick = {() => setShowComment(false)}>X</div>

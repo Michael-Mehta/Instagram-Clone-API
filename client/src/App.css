@@ -634,3 +634,32 @@
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+
+.followers {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+
+.followers-heading {
+  border-bottom: 1px solid rgb(199, 199, 199);
+  padding: 10px;
+
+}
+
+.follower-list{
+
+  display:flex;
+}
+
+
+.follower-username{
+  margin-left: 10px;
+}

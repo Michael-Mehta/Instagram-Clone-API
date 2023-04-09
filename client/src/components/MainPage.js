@@ -7,13 +7,14 @@ import Comment from './Comment'
 import Explore from './Explore'
 import Profile from './Profile'
 import Followers from './Followers'
+import UpdateUser from './UpdateUser'
 
 const MainPage = ({currUser, token, setAnyUser, setCurrUser, post, setPost, pic, setPic, showPost,
 setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfile, anyUser}) => {
   
 
   const [profileComment, setProfileComment] = useState(false)
-  
+  const [update, setUpdate] = useState(false)
 
   
  
@@ -30,23 +31,36 @@ setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfi
          <Explore currUser = {currUser} setShowComment = {setShowComment}
         setPic = {setPic} setPost = {setPost} setAnyUser = {setAnyUser}
         setShowPost = {setShowPost} setCurrUser = {setCurrUser} setExplore = {setExplore}
-        setProfile = {setProfile} setProfileComment = {setProfileComment} />
+        setProfile = {setProfile} setProfileComment = {setProfileComment}
+        setUpdate = {setUpdate} />
         }
 
         {profile && <Profile user = {anyUser} currUser = {currUser}
          setAnyUser = {setAnyUser} setCurrUser = {setCurrUser} setPost = {setPost}
          setPic = {setPic} setShowComment = {setShowComment} setExplore = {setExplore}
-          setProfile = {setProfile} setProfileComment = {setProfileComment} />
+          setProfile = {setProfile} setProfileComment = {setProfileComment} setUpdate = {setUpdate}/>
         
         }
 
 
+{update && <UpdateUser user = {anyUser} currUser = {currUser}
+         setAnyUser = {setAnyUser} setCurrUser = {setCurrUser} setPost = {setPost}
+         setPic = {setPic} setShowComment = {setShowComment} setExplore = {setExplore}
+          setProfile = {setProfile} setProfileComment = {setProfileComment} 
+          setUpdate = {setUpdate}/>
+        
+        }
+
+
+
+
         
       
-   {!showPost && !explore && !profile && <div className='mainpage'>
+   {!explore && !profile && !update && <div className='mainpage'>
 
         <NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
-         setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}/>
+         setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}
+         setUpdate = {setUpdate}/>
         < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}
         setPost = {setPost} setAnyUser = {setAnyUser} setProfile = {setProfile} setProfileComment = {setProfileComment}/>
         < Suggestions />

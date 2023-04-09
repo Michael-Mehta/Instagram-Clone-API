@@ -1,11 +1,16 @@
 
 import { useState } from "react";
 
+import NavBar from "./NavBar";
 
-const UpdateUser = (currUser) => {
+
+const UpdateUser = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComment, 
+  setPic, setExplore, setProfile, setProfileComment, setUpdate}) => {
     // in your React component
 
 const [avatar, setAvatar] = useState(null);
+
+const [showPost, setShowPost] = useState(false)
 
 const handleAvatarChange = (event) => {
   setAvatar(event.target.files[0]);
@@ -32,8 +37,10 @@ const handleAvatarUpdate = () => {
 
 return (
   <div>
-    <input type="file" onChange={handleAvatarChange} />
-    <button onClick={handleAvatarUpdate}>Update Avatar</button>
+    <div><NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
+         setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}
+         setUpdate = {setUpdate}/>
+         </div>
   </div>
 );
 

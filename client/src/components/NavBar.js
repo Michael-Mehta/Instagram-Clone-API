@@ -5,7 +5,7 @@ import { BsFillHouseDoorFill, BsSearch, BsCompass,
  import { GiDove, GiHamburgerMenu } from "react-icons/gi";
  import { useNavigate } from "react-router-dom";
 
-const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore, setProfile}) => {
+const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore, setProfile, setUpdate}) => {
 
   const navigate = useNavigate();
 
@@ -46,6 +46,8 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore, set
 
   const handleHome = () => {
     setShowPost(false)
+
+    setUpdate(false)
    
     setExplore(false)
 
@@ -75,6 +77,7 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore, set
 
           setAnyUser(data)
         
+          setUpdate(false)
           setExplore(false)
           setProfile(true)
           
@@ -96,6 +99,8 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore, set
     e.preventDefault();
 
     navigate('/')
+
+    setUpdate(false)
     
     setProfile(false)
 

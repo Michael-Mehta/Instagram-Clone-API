@@ -52,12 +52,13 @@ const CreatePost = ({setShowPost, currUser}) => {
    
 
   return (
-    <div className='postCreateBackground'>
+    <div className='followersCreateBackground'>
 
       
       <div className='x' onClick = {() => setShowPost(false)}>X</div>
       
      
+     <div className = 'followers'>
       <h1>Choose a photo to post</h1>
 
       < AiOutlinePicture className='createPic'/>
@@ -71,6 +72,7 @@ const CreatePost = ({setShowPost, currUser}) => {
 
         <button type = "submit" className='firstSubmitButton'>Submit</button>
       </form>
+      </div>
       </div>
 
      

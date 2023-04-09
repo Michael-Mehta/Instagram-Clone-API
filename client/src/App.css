@@ -223,13 +223,13 @@
 
 .createPic {
   font-size:20vh;
-  margin-left: 20vh;
+ 
 }
 
 
 .postForm {
 
-  margin-left: 15vh;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -275,7 +275,7 @@
 .firstSubmitButton {
   width: 50%;
   margin-top: 10px;
-  margin-left: 3vh;
+  margin-left: 25%;
 }
 
 .arrow {
@@ -662,4 +662,16 @@
 
 .follower-username{
   margin-left: 10px;
+}
+
+
+.edit-profile-button {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 }

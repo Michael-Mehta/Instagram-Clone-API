@@ -7,7 +7,7 @@ import Post from './Post';
 import Followers from './Followers';
 
 const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComment, 
-    setPic, setExplore, setProfile, setProfileComment}) => {
+    setPic, setExplore, setProfile, setProfileComment, setUpdate}) => {
 
     const [showPost, setShowPost] = useState(false)
     const [personal, setPersonal] = useState(false)
@@ -17,6 +17,10 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     const [change, setChange] = useState(true)
     const [newUser, setNewUser] = useState(user)
     const [showFollowers, setShowFollowers] = useState(false)
+
+
+
+
 
     useEffect(() => {
 
@@ -190,8 +194,17 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
         setShowFollowers(true)
         
         
+
     }
 
+
+
+
+
+    const handleEdit = () => {
+        setProfile(false)
+        setUpdate(true)
+    }
 
 
     return(
@@ -207,12 +220,14 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
          </div>
          <div>
          <div className='bio'><div className='bio-image'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /></div><div className='bio-rest'><div className='bio-top'><h2>{user.username}</h2>
+         {personal &&  <button className="edit-profile-button" onClick={() => handleEdit()}>
+      Edit Profile
+    </button>}
          {!personal && !following && <button className="follow-button" onClick = {() => handleFollow()}>Follow</button>}
          {!personal && following && <button className='unfollow-button' onClick={() => handleUnfollow()}> Unfollow</button>}</div>
         <div className='bio-follow'><div onClick = {() => handleFollowerList()} className = 'follower-count'>{user.followers.length} Followers</div>
         <div onClick={() => handleFollowingList()} className = 'follower-count'>{user.following.length} Following</div></div></div></div>
-         {personal && <UpdateUser currUser = {currUser} />}
-
+         
 
 
 

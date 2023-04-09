@@ -216,7 +216,8 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
                <div>
         
           <div><NavBar setShowPost = {setShowPost} setAnyUser = {setAnyUser} currUser = {currUser}
-         setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}/>
+         setCurrUser = {setCurrUser} setExplore = {setExplore} setProfile = {setProfile}
+          setUpdate = {setUpdate}/>
          </div>
          <div>
          <div className='bio'><div className='bio-image'><img src = {user.avatar_url} alt = "profile pic" className='profilePic' /></div><div className='bio-rest'><div className='bio-top'><h2>{user.username}</h2>

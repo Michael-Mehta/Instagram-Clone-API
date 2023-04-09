@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { AiOutlinePicture } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
+import { BsXLg } from 'react-icons/bs';
+
 
 const CreatePost = ({setShowPost, currUser}) => {
 
@@ -55,7 +57,7 @@ const CreatePost = ({setShowPost, currUser}) => {
     <div className='followersCreateBackground'>
 
       
-      <div className='x' onClick = {() => setShowPost(false)}>X</div>
+      <div className='x' onClick = {() => setShowPost(false)}><BsXLg className='exit'/></div>
       
      
      <div className = 'followers'>

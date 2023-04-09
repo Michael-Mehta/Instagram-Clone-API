@@ -55,7 +55,7 @@ setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfi
 
 
 
-{newProfilePic && <ProfilePicUpdate setNewProfilePic={setNewProfilePic}/>}
+{newProfilePic && <ProfilePicUpdate setNewProfilePic={setNewProfilePic} currUser = {currUser}/>}
 
 
 

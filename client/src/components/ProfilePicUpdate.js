@@ -1,10 +1,36 @@
+import { useState } from "react";
 
 
 
 
 
 
-const ProfilePicUpdate = ({setNewProfilePic}) => {
+const ProfilePicUpdate = ({setNewProfilePic, currUser}) => {
+
+
+    const [avatar, setAvatar] = useState(null);
+
+  const handleInputChange = (event) => {
+    setAvatar(event.target.files[0]);
+  };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('avatar', avatar);
+    
+        try {
+          const response = await fetch(`http://localhost:3000/users/${currUser.id}/avatar`, {
+            method: 'PUT',
+            body: formData,
+          });
+          const data = await response.json();
+          console.log(data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
     return (
         <div className='followersCreateBackground'>
 
@@ -12,7 +38,12 @@ const ProfilePicUpdate = ({setNewProfilePic}) => {
 
       <div className='newProfilePic'>
         <h1>Change Profile Photo</h1>
-        <p className='uploadPhoto'>Upload Photo</p>
+        <form onSubmit={handleSubmit} className = 'profilePicForm'>
+   
+        <input type="file" onChange={handleInputChange} />
+      
+      <button type="submit">Update Avatar</button>
+    </form>
         <p className='cancel' onClick={() => setNewProfilePic(false)}>Cancel</p>
         </div>
 

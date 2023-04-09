@@ -8,6 +8,7 @@ import Explore from './Explore'
 import Profile from './Profile'
 import Followers from './Followers'
 import UpdateUser from './UpdateUser'
+import ProfilePicUpdate from './ProfilePicUpdate'
 
 const MainPage = ({currUser, token, setAnyUser, setCurrUser, post, setPost, pic, setPic, showPost,
 setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfile, anyUser}) => {
@@ -15,6 +16,7 @@ setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfi
 
   const [profileComment, setProfileComment] = useState(false)
   const [update, setUpdate] = useState(false)
+  const [newProfilePic, setNewProfilePic] = useState(false)
 
   
  
@@ -47,9 +49,13 @@ setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfi
          setAnyUser = {setAnyUser} setCurrUser = {setCurrUser} setPost = {setPost}
          setPic = {setPic} setShowComment = {setShowComment} setExplore = {setExplore}
           setProfile = {setProfile} setProfileComment = {setProfileComment} 
-          setUpdate = {setUpdate}/>
+          setUpdate = {setUpdate} setNewProfilePic = {setNewProfilePic}/>
         
         }
+
+
+
+{newProfilePic && <ProfilePicUpdate setNewProfilePic={setNewProfilePic}/>}
 
 
 

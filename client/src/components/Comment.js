@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { BsXLg } from 'react-icons/bs';
 
 const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setProfile, setExplore, profileComment}) => {
 
@@ -9,6 +10,7 @@ const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setP
     const [userPost, setUserPost] = useState(false)
 
   
+    const [newComment, setNewComment] = useState(false)
       
       
         useEffect(() => {
@@ -26,10 +28,35 @@ const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setP
                    setUserPost(true)
             }
 
-            console.log(anyUser)
+            
 
             
         }, [post]);
+
+
+
+        useEffect(() => {
+          fetch(`http://localhost:3000/posts/${post.id}/comments`)
+            .then(response => response.json())
+            .then(data =>  {setComments(data)
+            console.log(data) })
+            .catch(error => console.error(error));
+            console.log(post.user_id)
+
+
+
+
+            if (currUser.username === post.username){
+                   setUserPost(true)
+            }
+
+            
+
+
+
+            setNewComment(false)
+            
+        }, [newComment]);
       
 
 
@@ -60,11 +87,16 @@ const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setP
             return response.json()
           })
           .then(comment => {
-            // Do something with the created comment
+
+            setNewComment(true)
+            
           })
           .catch(error => {
-            // Handle the error
+            
           })
+
+
+
          
           
     }
@@ -118,7 +150,7 @@ const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setP
         <div className='followersCreateBackground'>
 
       
-      <div className='x' onClick = {() => setShowComment(false)}>X</div>
+      <div className='x' onClick = {() => setShowComment(false)}><BsXLg className='exit'/></div>
       
      <div className='picComments'>
         <div className='imagePic'>
@@ -130,12 +162,16 @@ const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setP
         <div>
         <div className='postTop' onClick={() => handleProfile()}><div>
           <img src = {profileComment? anyUser.avatar_url : post.user_avatar_url} 
-        className = 'avatar'/></div>
-            <div>{profileComment? anyUser.username : post.username}</div></div>
+        className = 'commentAvatar'/></div>
+            <div className='commentUsername'>{profileComment? anyUser.username : post.username}</div></div>
             {comments.map(comment => (
-              <div key={comment.id}>
+              <div key={comment.id} className = 'commentFormat'>
 
-                <p>@{comment.user.username}</p>
+                
+
+                <img src = {comment.user.avatar_url} alt = 'profile pic' className = 'commentAvatar'/>
+
+                <p className='commentUsername'>{comment.user.username}</p>
 
                 
                 

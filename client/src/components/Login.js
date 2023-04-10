@@ -13,6 +13,7 @@ const Login = ({setCurrUser, setToken}) =>{
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
+    const [loginError, setLoginError] = useState(null)
    
 
 
@@ -54,13 +55,14 @@ const Login = ({setCurrUser, setToken}) =>{
           console.log(data)
           localStorage.setItem('authToken', data.token);
           
-
+          
           
            navigate('/')
           
          
       }catch(error){
          console.log("error", error)
+         setLoginError(error)
       }
   }
     const handleSubmit = (e) => {
@@ -97,26 +99,46 @@ const Login = ({setCurrUser, setToken}) =>{
 
         <div> 
         <input onChange = {handleUsernameChange} value = {username}
-         placeholder = 'Username' type = "text" id = "usernameInput"/>
+         placeholder = 'Username' type = "text" id = "usernameInput"
+         className="input-large"/>
         </div>
+
+
+
+        <br/>
 
         <div> 
         <input onChange = {handleEmailChange} value = {email}
-         placeholder = 'Email' type = "text" id = "emailInput"/>
+         placeholder = 'Email' type = "text" id = "emailInput"
+         className="input-large"/>
         </div>
+
+        <br/>
+
 
         <div>
         <input onChange = {handlePasswordChange} value = {password}
-         placeholder = 'Password' type = "password" id = "passwordInput"/>
+         placeholder = 'Password' type = "password" id = "passwordInput"
+         className="input-large"/>
         </div>
 
+
+        <br/>
         
 
 
-        <button onClick={(e) => handleSubmit(e)} >Login</button>
 
 
+        <button onClick={(e) => handleSubmit(e)} className="instagram-button" >Login</button>
+
+        <br/>
+
+
+        {loginError && <div className='error'>{loginError}</div>}
+
+        <br/>
         <div>Don't have an account?<a href="#signup" onClick={handleClick} >Signup</a> </div>
+        
   
         </div>
 

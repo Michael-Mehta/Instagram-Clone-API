@@ -220,7 +220,7 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
                 <div className='postDescription'>
                     <p>Description:{post.description}</p>
                 </div>
-                <div className='addComment'>
+                <div className='addComment' onClick={() => handleComment()}>
                     <p>View all comments</p>
                 </div>
             </div>

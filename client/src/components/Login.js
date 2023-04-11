@@ -52,7 +52,7 @@ const Login = ({setCurrUser, setToken}) =>{
             throw data.error
           localStorage.setItem("token", response.headers.get("Authorization"))
           setCurrUser(data.user)
-          console.log(data)
+          
           localStorage.setItem('authToken', data.token);
           
           

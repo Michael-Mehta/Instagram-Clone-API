@@ -21,6 +21,10 @@ class User < ApplicationRecord
 
          followability
 
+         has_many :follows
+         
+         has_many :followed_users, through: :follows
+
 
 
   def unfollow(user)

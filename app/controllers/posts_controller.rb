@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all.map do |post|
+    @posts = Post.order(created_at: :desc).map do |post|
       {
         id: post.id,
         description: post.description,

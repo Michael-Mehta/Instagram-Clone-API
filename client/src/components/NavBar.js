@@ -26,10 +26,7 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore, set
       .then((response) => response.json())
       .then((data) => {
           
-          console.log(data)
          
-          console.log(setCurrUser)
-          console.log(setExplore)
           setCurrUser(data)
         
           
@@ -72,8 +69,7 @@ const NavBar = ({setShowPost, setAnyUser, currUser, setCurrUser, setExplore, set
       .then((response) => response.json())
       .then((data) => {
           
-          console.log(data)
-         
+          
 
           setAnyUser(data)
         

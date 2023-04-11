@@ -97,11 +97,15 @@
 }
 
 .suggestions {
+  
+
   display: flex;
   flex-direction: column;
+
+
   border: 1px solid rgba(0, 0, 0, 1);
   position: fixed;
-  width: 1fr;
+  width: 17%;
   height: 100vh;
 }
 
@@ -129,8 +133,11 @@
 
 
 
-.suggestions h1 {
+.suggestions h3 {
   position: fixed;
+  margin-top: 15vh;
+  margin-left: 2vw;
+  color:rgb(165, 163, 163);
 }
 
 .naVItems {
@@ -794,4 +801,70 @@
   height: 30px;
   width: auto;
   border-radius: 15px;
+}
+
+
+.main-signup .form h1 {
+  margin-top: -50px;
+}
+
+.main-signup {
+    
+  margin-top: -70px;
+}
+
+
+.main-signup .form form input{
+
+margin-top: 5px;
+
+margin-bottom: 5px;
+}
+
+
+.signupRegistration {
+  margin-bottom: 20px;
+}
+
+.suggestedUser {
+
+  
+
+  display: flex;
+  margin-left: 1vw;
+  margin-bottom: 1vh;
+
+ 
+}
+
+.suggestedUser div {
+  margin-left: 1vw;
+}
+
+.suggestedUsers {
+
+ margin-top: 10vh; 
+ 
+}
+
+.biggerAvatar {
+
+  height: 40px;
+  width: auto;
+  border-radius: 20px;
+ 
+}
+
+.suggestionsCurrUsers {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+}
+
+
+.suggestionUsername {
+
+  margin-left: 1vw;
+  margin-top: 2vh;
+
 }

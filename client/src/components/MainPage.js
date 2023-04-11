@@ -18,6 +18,51 @@ setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfi
   const [update, setUpdate] = useState(false)
   const [newProfilePic, setNewProfilePic] = useState(false)
 
+
+  useEffect(() => {
+
+
+  
+  
+
+   
+
+    fetch(`http://localhost:3000/users/${currUser.id}`, {
+         
+       method: 'GET',
+ 
+       headers: {
+ 
+         
+ 
+         'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+       }
+ 
+       })
+       .then((response) => response.json())
+       .then((data) => {
+           
+           
+       
+ 
+           setCurrUser(data)
+         
+           
+           
+       })
+       .catch((error) => {
+           console.log('Error:', error)
+       })
+ 
+         
+ 
+      
+       
+         
+ 
+     },[]);
+ 
+
   
  
  
@@ -69,7 +114,7 @@ setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfi
          setUpdate = {setUpdate}/>
         < Home token = {token} currUser = {currUser} setShowComment = {setShowComment} setPic = {setPic}
         setPost = {setPost} setAnyUser = {setAnyUser} setProfile = {setProfile} setProfileComment = {setProfileComment}/>
-        < Suggestions />
+        < Suggestions currUser = {currUser}/>
        
 
     </div>

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resources :likes, only: [:create]
     resources :comments, only: [:create, :index]
   end
+
+  resources :users do
+    get 'suggested_users', on: :collection
+  end
   put '/users/:id/avatar', to: 'users#update_avatar'
   post 'profile/:id/follow', to: 'profile#follow', as: 'follow'
   post 'profile/:id/unfollow', to: 'profile#unfollow', as: 'unfollow'

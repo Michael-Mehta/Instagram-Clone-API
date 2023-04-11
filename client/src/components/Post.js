@@ -30,7 +30,7 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
 
 
         setLikes(post.likes_count)
-        console.log(post)
+        
   
     },[])
 
@@ -56,8 +56,7 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
           .then((response) => response.json())
           .then((data) => {
               
-              console.log(data)
-             
+              
     
               setAnyUser(data)
 
@@ -98,7 +97,6 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
           .then((response) => response.json())
           .then((data) => {
               
-              console.log(data)
              
     
               setAnyUser(data)

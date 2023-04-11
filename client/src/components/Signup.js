@@ -60,16 +60,17 @@ const Signup=({currUser, setCurrUser})=>{
 
 
         <form ref={formRef} onSubmit={handleSubmit} >
-            <input type="text" name='username' placeholder="username" />
+
+            <input type="text" name='username' placeholder="username" className="input-large" />
             <br/>
-            <input type="email" name='email' placeholder="email" />
+            <input type="email" name='email' placeholder="email" className="input-large" />
             <br/>
-            <input type="password" name='password' placeholder="password" />
+            <input type="password" name='password' placeholder="password" className="input-large" />
             <br/>
-            <input type='submit' value="Submit" />
+            <input type='submit' value="Submit" className="instagram-button"/>
         </form>
         <br />
-        <div>Already registered, <a href="#login" onClick={handleClick} >Login</a> here.</div>
+        <div className="signupRegistration">Already registered, <a href="#login" onClick={handleClick} >Login</a> here.</div>
         </div>
     </div>
     )

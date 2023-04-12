@@ -868,3 +868,46 @@ margin-bottom: 5px;
   margin-top: 2vh;
 
 }
+
+.suggestedFollow{
+
+  margin-left: 37%;
+
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.suggestedFollow:hover {
+
+  background-color: #0077b5;
+
+}
+
+.suggestedUnfollow{
+
+  margin-left: 37%;
+  background-color: #a1a1a1;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.suggestedUnfollow:hover {
+
+  background-color: #7a7a7a;
+
+}

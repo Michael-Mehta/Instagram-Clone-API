@@ -8,6 +8,33 @@ const Suggestions = ({currUser}) => {
   const [users, setUsers] = useState([])
 
 
+  const SuggestedUser = ({user}) => {
+
+    const [following, setFollowing] = useState(false)
+
+
+    const secondHandleFollow = (user) => {
+
+      setFollowing(true)
+      handleFollow(user)
+    }
+
+
+    const secondHandleUnfollow = (user) => {
+
+      setFollowing(false)
+      handleUnfollow(user)
+    }
+
+    return (
+    <div className='suggestedUser'>
+    <img src = {user.avatar_url} className = 'avatar'/> <div>{user.username} 
+    </div>
+    {following ? <button onClick={() => secondHandleUnfollow(user)} className = "suggestedUnfollow">Unfollow</button> : 
+    <button onClick={() => secondHandleFollow(user)} className = "suggestedFollow">Follow</button> }
+    </div>
+    )
+  }
 
 
   const getUsers = () => {
@@ -50,9 +77,49 @@ useEffect(() => {
 },[])
   
   
+
+const handleFollow = (user) => {
+
+  fetch(`http://localhost:3000/profile/${user.id}/follow`, {
+      
+  
+  method: 'POST',
+
+  headers: {
+
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+
+  }
+
+  }).catch((error) => {
+      console.log('Error:', error)
+  })
+
+  
+  
+}
  
   
   
+const handleUnfollow = (user) => {
+
+  fetch(`http://localhost:3000/profile/${user.id}/unfollow`, {
+      
+  
+  method: 'POST',
+
+  headers: {
+
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+
+  }
+
+  }).catch((error) => {
+      console.log('Error:', error)
+  })
+
+  
+}
   
 
   return (
@@ -69,9 +136,7 @@ useEffect(() => {
         <div className='suggestedUsers'>
         {users.map((user) => {
           return(
-            <div className='suggestedUser'>
-              <img src = {user.avatar_url} className = 'avatar'/> <div>{user.username}</div>
-              </div>
+            < SuggestedUser user = {user} />
           )
         })
         

@@ -17,6 +17,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     const [change, setChange] = useState(true)
     const [newUser, setNewUser] = useState(user)
     const [showFollowers, setShowFollowers] = useState(false)
+    const [followings, setFollowings] = useState(false)
 
 
 
@@ -180,6 +181,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     const handleFollowerList = () => {
 
 
+          setFollowings(false)
           setShowFollowers(true)
 
        
@@ -191,6 +193,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
        
 
 
+        setFollowings(true)
         setShowFollowers(true)
         
         
@@ -254,7 +257,8 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
      
     </div>
     </div>
-    { showFollowers && <Followers setShowFollowers={setShowFollowers} user = {user}/>}
+    { showFollowers && <Followers setShowFollowers={setShowFollowers} user = {user}
+    followings = {followings}/>}
 
     
     </div>

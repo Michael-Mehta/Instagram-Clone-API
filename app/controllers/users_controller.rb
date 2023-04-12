@@ -4,8 +4,31 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find_by(id: params[:id])
+        followers = @user.followers
+
+         follower_list = []
+         followers.each do |follower|
+        follower_list << {
+        id: follower.id,
+        username: follower.username,
+        avatar_url: url_for(follower.avatar)
+      }
+
+    end
+
+
+      following = @user.following
+
+         following_list = []
+         following.each do |followee|
+        following_list << {
+        id: followee.id,
+        username: followee.username,
+        avatar_url: url_for(followee.avatar)
+      }
+    end
         render json: { id: @user.id, email: @user.email, username: @user.username, avatar_url: url_for(@user.avatar),
-         followers: @user.followers, following: @user.following }
+         followers: follower_list, following: following_list }
       end
 
 

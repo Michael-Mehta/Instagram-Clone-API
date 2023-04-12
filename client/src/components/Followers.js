@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react'
 
 import { BsXLg } from 'react-icons/bs';
 
-const Followers = ({setShowFollowers, user}) => {
+const Followers = ({setShowFollowers, user, followings}) => {
+
+  useEffect(() => {
+
+    console.log(user)
+  },[])
 
     return(
 
@@ -10,21 +15,36 @@ const Followers = ({setShowFollowers, user}) => {
 
       <div onClick={() => setShowFollowers(false)}><BsXLg className='exit'/></div>
 
-      <div className='followers'>
-        <div className='followers-heading'>Followers</div>
+      {followings ? <div className='followers'>
+        <div className='followers-heading'>Following</div>
         
 
         {
-            user.followers.map((follower) => {
+            user.following.map((follower) => {
 
                 return(
                 <div className='follower-list'>
-                     <div><img src = {user.avatar_url} alt = 'profile pic' className = 'avatar'/></div>
+                     <div><img src = {follower.avatar_url} alt = 'profile pic' className = 'avatar'/></div>
                      <div className='follower-username'>{follower.username}</div>
                 </div>)
             })
         }
-      </div>
+      </div> : 
+      <div className='followers'>
+      <div className='followers-heading'>Followers</div>
+      
+
+      {
+          user.followers.map((follower) => {
+
+              return(
+              <div className='follower-list'>
+                   <div><img src = {follower.avatar_url} alt = 'profile pic' className = 'avatar'/></div>
+                   <div className='follower-username'>{follower.username}</div>
+              </div>)
+          })
+      }
+    </div>}
 
     </div>
 

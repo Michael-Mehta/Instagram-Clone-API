@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   include ActiveStorage::SetCurrent
 
   before_action :authenticate_user!
-  before_action :set_post, only: %i[ show update destroy ]
+
 
   # GET /posts
   def index
@@ -26,13 +26,29 @@ class PostsController < ApplicationController
   # GET /posts/1
   def show
    
-    render json: @post.as_json(include: :image).merge(
-      image: @post.image.url 
-    )
+    post = Post.includes(:comments, :image_attachment).find(params[:id])
+    render json: {
+      id: post.id,
+      description: post.description,
+      image: post.image.attached? ? url_for(post.image) : nil,
+      comments: post.comments.map do |comment|
+        {
+          id: comment.id,
+          content: comment.content,
+          created_at: comment.created_at,
+          user: {
+            id: comment.user.id,
+            username: comment.user.username,
+            avatar_url: url_for(comment.user.avatar),
+          }
+        }
+      end
+    }
   end
 
   # POST /posts
   def create
+   
     @post = current_user.posts.build post_params
 
     if @post.save
@@ -44,6 +60,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
+    @post = current_user.posts.find params[:id]
     if @post.update(post_params)
       render json: @post
     else
@@ -53,6 +70,7 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
+    @post = current_user.posts.find params[:id]
     @post.destroy
   end
 
@@ -60,9 +78,7 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = current_user.posts.find params[:id]
-    end
+    
 
     # Only allow a list of trusted parameters through.
     def post_params

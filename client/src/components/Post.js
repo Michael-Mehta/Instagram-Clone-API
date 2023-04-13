@@ -30,8 +30,11 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
 
 
         setLikes(post.likes_count)
+
+
         
   
+    
     },[])
 
 

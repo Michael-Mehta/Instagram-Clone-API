@@ -72,7 +72,7 @@ setShowPost, showComment, setShowComment, setExplore, explore, profile, setProfi
       {showComment && <Comment setShowComment={setShowComment}
        pic = {pic} post = {post} currUser = {currUser} setAnyUser = {setAnyUser}
        anyUser = {anyUser} setProfile = {setProfile} setExplore = {setExplore} 
-       profileComment = {profileComment}/> }
+       profileComment = {profileComment} setPost = {setPost}/> }
 
        {explore &&
          <Explore currUser = {currUser} setShowComment = {setShowComment}

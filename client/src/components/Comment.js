@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { BsXLg } from 'react-icons/bs';
 
-const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setProfile, setExplore, profileComment}) => {
+const Comment = ({setShowComment, pic, post, currUser, setAnyUser,
+   anyUser, setProfile, setExplore, profileComment, setPost}) => {
 
 
     const [body, setBody] = useState('');
@@ -14,20 +15,33 @@ const Comment = ({setShowComment, pic, post, currUser, setAnyUser, anyUser, setP
       
       
         useEffect(() => {
-          fetch(`http://localhost:3000/posts/${post.id}/comments`)
-            .then(response => response.json())
-            .then(data =>  {setComments(data)
-            console.log(data) })
-            .catch(error => console.error(error));
-            console.log(post.user_id)
+          
+        setPost(post)
 
 
-
-
-            if (currUser.username === post.username){
-                   setUserPost(true)
-            }
-
+        fetch(`http://localhost:3000/posts/${post.id}`, {
+            
+        method: 'GET',
+  
+        headers: {
+  
+          
+  
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        }
+  
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            
+          console.log(data)
+          setComments(data.comments)
+          
+            
+        })
+        .catch((error) => {
+            console.log('Error:', error)
+        })
             
 
             

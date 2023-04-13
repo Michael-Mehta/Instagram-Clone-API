@@ -216,7 +216,7 @@ const Post = ({ post, currUser, setShowComment, setPic, setPost, profile, setAny
                 </div>
                 <div className='likes'>Likes:{likes}</div>
                 <div className='postDescription'>
-                    <p>Description:{post.description}</p>
+                    <p>Description: {post.description}</p>
                 </div>
                 <div className='addComment' onClick={() => handleComment()}>
                     <p>View all comments</p>

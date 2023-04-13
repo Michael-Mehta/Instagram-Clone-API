@@ -26,6 +26,7 @@ const ProfilePicUpdate = ({setNewProfilePic, currUser}) => {
           });
           const data = await response.json();
           console.log(data);
+          setNewProfilePic(false)
         } catch (error) {
           console.error(error);
         }
@@ -42,7 +43,7 @@ const ProfilePicUpdate = ({setNewProfilePic, currUser}) => {
    
         <input type="file" onChange={handleInputChange} />
       
-      <button type="submit">Update Avatar</button>
+      <button type="submit" >Update Avatar</button>
     </form>
         <p className='cancel' onClick={() => setNewProfilePic(false)}>Cancel</p>
         </div>

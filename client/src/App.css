@@ -845,6 +845,12 @@ margin-bottom: 5px;
 }
 
 .suggestedUser div {
+
+  display: flex;
+  width:100px;
+}
+
+.suggestedUser div div {
   margin-left: 1vw;
 }
 
@@ -878,7 +884,7 @@ margin-bottom: 5px;
 
 .suggestedFollow{
 
-  margin-left: 37%;
+  margin-left: 23%;
 
   background-color: #0095f6;
   color: white;
@@ -900,7 +906,7 @@ margin-bottom: 5px;
 
 .suggestedUnfollow{
 
-  margin-left: 37%;
+  margin-left: 23%;
   background-color: #a1a1a1;
   color: white;
   border: none;
@@ -989,4 +995,24 @@ margin-bottom: 5px;
 .postUsername {
 
   margin-top:10px;
+}
+
+
+.instagram-buttonTwo {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  width: 75%;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.2s ease-in-out;
+  margin-left: 12%;
+}
+
+.instagram-buttonTwo:hover {
+  background-color: #0077b5;
 }

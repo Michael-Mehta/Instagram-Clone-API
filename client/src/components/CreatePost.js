@@ -45,6 +45,7 @@ const CreatePost = ({setShowPost, currUser}) => {
     .then((data) => {
       
       console.log(data);
+      setShowPost(false)
       
 
     }).catch((error) => console.log(error));
@@ -71,8 +72,10 @@ const CreatePost = ({setShowPost, currUser}) => {
         <textarea type = "text" name = "description" id = "description" 
          placeholder='add description' className='secondInput' />
      
+        <br/>
+        <br/>
 
-        <button type = "submit" className='firstSubmitButton'>Submit</button>
+        <button type = "submit" className='instagram-buttonTwo'>Submit</button>
       </form>
       </div>
       </div>

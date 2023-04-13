@@ -28,7 +28,9 @@ const Suggestions = ({currUser}) => {
 
     return (
     <div className='suggestedUser'>
+      <div>
     <img src = {user.avatar_url} className = 'avatar'/> <div>{user.username} 
+    </div>
     </div>
     {following ? <button onClick={() => secondHandleUnfollow(user)} className = "suggestedUnfollow">Unfollow</button> : 
     <button onClick={() => secondHandleFollow(user)} className = "suggestedFollow">Follow</button> }

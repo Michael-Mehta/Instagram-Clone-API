@@ -155,7 +155,14 @@
   
 }
 
+.naVItems div:hover{
+  background-color: rgb(240, 240, 240);
+  border-radius: 30px;
+}
+
 .naVItems div div {
+  margin-top: -15px;
+  padding-bottom: 18px;
   padding-left: 10px;
 }
 
@@ -411,9 +418,9 @@
 }
 
 .avatar {
-  height: 20px;
+  height: 22px;
   width: auto;
-  border-radius: 10px;
+  border-radius: 11px;
  
 }
 
@@ -910,4 +917,76 @@ margin-bottom: 5px;
 
   background-color: #7a7a7a;
 
+}
+
+
+.follower-username {
+  margin-top: 10px;
+}
+
+
+.followersFollow {
+  margin-left: 43%;
+
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.followersFollow:hover {
+  background-color: #0077b5;
+}
+
+.followersUnfollow{
+
+  margin-left: 43%;
+  background-color: #a1a1a1;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.followersUnfollow:hover {
+
+  background-color: #7a7a7a;
+
+}
+
+.follower-list {
+  margin-bottom: 5px;
+  margin-left: 2vw;
+}
+
+.evenBiggerAvatar {
+
+  height: 50px;
+  width: auto;
+  border-radius: 25px;
+ 
+}
+
+.postAvatar {
+
+  height: 36px;
+  width: auto;
+  border-radius: 18px;
+
+}
+
+.postUsername {
+
+  margin-top:10px;
 }

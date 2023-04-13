@@ -258,7 +258,7 @@ const Profile = ({user, currUser, setAnyUser, setCurrUser, setPost, setShowComme
     </div>
     </div>
     { showFollowers && <Followers setShowFollowers={setShowFollowers} user = {user}
-    followings = {followings}/>}
+    followings = {followings} currUser = {currUser}/>}
 
     
     </div>

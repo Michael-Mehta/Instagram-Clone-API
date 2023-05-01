@@ -20,7 +20,7 @@ gem "jsonapi-serializer"
 gem 'devise-jwt'
 gem 'active_model_serializers'
 gem 'followability'
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test, :production]
 
 
 # Use Redis adapter to run Action Cable in production

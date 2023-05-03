@@ -1,7 +1,9 @@
+require 'sprockets/railtie'
+
 require_relative "boot"
 
 require 'rails'
-require 'sprockets/railtie'
+
 
 require 'dotenv/load'
 

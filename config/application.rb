@@ -1,6 +1,7 @@
 require_relative "boot"
 
-require "rails/all"
+require 'rails'
+require 'sprockets/railtie'
 
 require 'dotenv/load'
 
@@ -15,6 +16,7 @@ module InstagramClone
 
     
 
+    config.assets.enabled = true
     config.session_store :cookie_store, key: '_interslice_session'
    
     config.middleware.use config.session_store, config.session_options

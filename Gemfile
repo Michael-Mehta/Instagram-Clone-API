@@ -22,7 +22,7 @@ gem 'active_model_serializers'
 gem 'followability'
 gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'sprockets-rails', '~> 3.4', '>= 3.4.2'
-gem 'activestorage', '~> 7.0'
+gem 'activestorage', '~> 7.0', '>= 7.0.4.3'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

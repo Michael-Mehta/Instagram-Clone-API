@@ -21,7 +21,7 @@ gem 'devise-jwt'
 gem 'active_model_serializers'
 gem 'followability'
 gem 'dotenv-rails', groups: [:development, :test, :production]
-
+gem 'sprockets'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

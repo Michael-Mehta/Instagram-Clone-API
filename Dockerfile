@@ -28,7 +28,11 @@ RUN bundle install --without development test
 # Copy the rest of the application
 COPY . .
 
-# Precompile assets
+# Accept RAILS_MASTER_KEY as build argument and set it as ENV
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+
+# Precompile assets (needs secret key base from credentials)
 RUN bundle exec rake assets:precompile
 
 # Expose the port Azure uses

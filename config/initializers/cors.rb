@@ -7,7 +7,7 @@
 
  Rails.application.config.middleware.insert_before 0, Rack::Cors do
    allow do
-     origins "https://instagramclonebackend-ffg2c4gsd3fwg4gd.westus3-01.azurewebsites.net"
+     origins "https://witty-bush-0ea9f5c1e.2.azurestaticapps.net"
 
      resource "*",
 

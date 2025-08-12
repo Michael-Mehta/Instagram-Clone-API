@@ -4,7 +4,6 @@ class CreateFollowabilityRelationships < ActiveRecord::Migration[7.0]
       t.belongs_to :followerable, polymorphic: true, null: false
       t.belongs_to :followable, polymorphic: true, null: false
       t.integer :status
-
       t.timestamps
     end
   end

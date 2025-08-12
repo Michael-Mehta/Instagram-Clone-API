@@ -18,5 +18,10 @@ module InstagramClone
   class Application < Rails::Application
     config.load_defaults 7.0
     config.api_only = true
+
+    # Add back cookies and session middleware for auth
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_instagram_clone_session'
   end
 end
+

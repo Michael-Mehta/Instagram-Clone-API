@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       {
         id: follower.id,
         username: follower.username,
-        avatar_url: url_for(follower.avatar)
+        avatar_url: follower.avatar.attached? ? url_for(follower.avatar) : ActionController::Base.helpers.asset_path('defaultAvatar.jpg')
       }
     end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       {
         id: followee.id,
         username: followee.username,
-        avatar_url: url_for(followee.avatar)
+        avatar_url: followee.avatar.attached? ? url_for(followee.avatar) : ActionController::Base.helpers.asset_path('defaultAvatar.jpg')
       }
     end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       id: @user.id,
       email: @user.email,
       username: @user.username,
-      avatar_url: url_for(@user.avatar),
+      avatar_url: @user.avatar.attached? ? url_for(@user.avatar) : ActionController::Base.helpers.asset_path('defaultAvatar.jpg'),
       followers: follower_list,
       following: following_list
     }
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
       {
         username: user.username,
         id: user.id,
-        avatar_url: url_for(user.avatar)
+        avatar_url: user.avatar.attached? ? url_for(user.avatar) : ActionController::Base.helpers.asset_path('defaultAvatar.jpg')
       }
     }
   end

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'private/test'
   get '/users/:id', to: 'users#show'
   get '/users/:id/posts', to: 'users#posts'
+  get '/debug_storage', to: 'application#debug_storage'
+  get '/clear_database', to: 'application#clear_database'
   devise_for :users, 
     path: '', 
     path_names: {
